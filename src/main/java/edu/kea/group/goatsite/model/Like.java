@@ -1,4 +1,4 @@
-package edu.kea.dahl.goatsite.model;
+package edu.kea.group.goatsite.model;
 
 import javax.persistence.*;
 

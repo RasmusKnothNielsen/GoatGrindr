@@ -1,7 +1,6 @@
-package edu.kea.dahl.goatsite.model;
+package edu.kea.group.goatsite.model;
 
 import org.hibernate.validator.constraints.Length;
-
 import javax.persistence.*;
 import java.util.Date;
 
