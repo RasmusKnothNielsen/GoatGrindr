@@ -1,9 +1,15 @@
 package edu.kea.group.goatsite.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 import java.util.Date;
 
+@Data
 @Entity
 @Table(name = "goats")
 public class Goat {
@@ -14,10 +20,12 @@ public class Goat {
 
     private String name;
 
-    @Column(nullable = false)
+    @NotNull
+    @Past
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Date dob;
 
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     private Gender gender;
 
     @Length(max = 120)
@@ -26,7 +34,7 @@ public class Goat {
     @Length(max = 10000)
     private String longDescription;
 
-    //@Column(nullable = false)
+    @Email(message = "Email should be valid")
     private String username;
     private String password;
 
