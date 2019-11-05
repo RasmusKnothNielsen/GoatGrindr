@@ -1,6 +1,7 @@
 package edu.kea.group.goatsite.model;
 
 import lombok.Data;
+import org.hibernate.annotations.OnDelete;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
