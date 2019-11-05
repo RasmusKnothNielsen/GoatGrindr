@@ -1,15 +1,25 @@
 package edu.kea.group.goatsite.model;
 
-import javax.persistence.*;
+import lombok.Data;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+
+@Data
 @Entity
 @Table(name = "matches")
 public class Match {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long goat1_id;
-    private Long goat2_id;
+
+    @NotNull
+    @ManyToOne
+    private Goat goat1Id;
+
+    @NotNull
+    @ManyToOne
+    private Goat goat2Id;
 
 }

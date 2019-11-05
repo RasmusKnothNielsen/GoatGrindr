@@ -1,5 +1,6 @@
 package edu.kea.group.goatsite.controller.api;
 
+import edu.kea.group.goatsite.model.Gender;
 import edu.kea.group.goatsite.model.Goat;
 import edu.kea.group.goatsite.repository.GoatRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +17,32 @@ public class GoatApiController {
 
     @GetMapping("/goats")
     public Iterable<Goat> getGoats() {
-        System.out.println("Test");
         return goatRepository.findAll();
+    }
+
+    @GetMapping("/goats/{id}")
+    public Goat getGoatById(@PathVariable("id") Long id) {
+        return goatRepository.findById(id).orElse(null);
+    }
+
+    @GetMapping("/goats/findbyname")
+    public Iterable<Goat> getGoatsByName(@RequestParam(value = "name") String name) {
+        return goatRepository.findAllByName(name);
+    }
+
+    @GetMapping("/goats/findbygender")
+    public Iterable<Goat> getGoatsByGender(@RequestParam(value = "gender") String genderString) {
+        try {
+            return goatRepository.findAllByGender(Gender.valueOf(genderString));
+        } catch (IllegalArgumentException | NullPointerException e) {
+            //Invalid gender or null
+            return null;
+        }
+    }
+
+    @GetMapping("/goats/oldtimers")
+    public Iterable<Goat> getOldTimers() {
+        return goatRepository.findTheOldTimers();
     }
 
     @PostMapping("/goats")

@@ -1,15 +1,25 @@
 package edu.kea.group.goatsite.model;
 
-import javax.persistence.*;
+import lombok.Data;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+
+@Data
 @Entity
 @Table(name = "likes")
 public class Like {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long goat_liker;
-    private Long goat_liked;
+
+    @NotNull
+    @ManyToOne
+    private Goat goatLiker;
+
+    @NotNull
+    @ManyToOne
+    private Goat goatLiked;
 
 }
