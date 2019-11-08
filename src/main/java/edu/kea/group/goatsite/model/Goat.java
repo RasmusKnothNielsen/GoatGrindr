@@ -44,5 +44,8 @@ public class Goat {
     @Enumerated(EnumType.STRING)
     private Role role;
 
+    @NotNull
+    private boolean enabled;
+
 
 }

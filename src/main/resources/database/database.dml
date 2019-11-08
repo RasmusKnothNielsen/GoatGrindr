@@ -1,11 +1,11 @@
 USE goats;
 
-INSERT INTO goats (name, username, password, short_description, long_description, dob, gender)
+INSERT INTO goats (name, username, password, short_description, long_description, dob, gender, enabled)
 VALUES
-    ('Ferdinand', 'Ferdinand', 'Hunter2', 'Dont be a sheep', 'Goat looking for a good time. Are you up for it??', '2017-03-04', 'MALE'),
-    ('Frida', 'Frida', 'Hunter2', 'Feeling cute', 'GOATGIRL LOOKING FOR AAAACTION', '2012-11-05', 'FEMALE'),
-    ('Frode', 'Frode', 'Hunter2', 'GOAT SEE GOAT DO', 'Old goat looking for other goats!', '2016-11-05', 'MALE'),
-    ('Fie', 'Fie', 'Hunter2', 'Be like a GOAT', 'Goat who loves long walks on the beach and hygge at the fireplace. Hook up if you are the same!', '2012-11-05', 'FEMALE');
+    ('Ferdinand', 'Ferdinand', '$2a$10$eqQ86pzWC6P6oUrYcpa0fujLZ.TBkhTl/lTftjNaJhXbXTD.cUZTm', 'Dont be a sheep', 'Goat looking for a good time. Are you up for it??', '2017-03-04', 'MALE', true),
+    ('Frida', 'Frida', '$2a$10$eqQ86pzWC6P6oUrYcpa0fujLZ.TBkhTl/lTftjNaJhXbXTD.cUZTm', 'Feeling cute', 'GOATGIRL LOOKING FOR AAAACTION', '2012-11-05', 'FEMALE', true),
+    ('Frode', 'Frode', '$2a$10$eqQ86pzWC6P6oUrYcpa0fujLZ.TBkhTl/lTftjNaJhXbXTD.cUZTm', 'GOAT SEE GOAT DO', 'Old goat looking for other goats!', '2016-11-05', 'MALE', true),
+    ('Fie', 'Fie', '$2a$10$eqQ86pzWC6P6oUrYcpa0fujLZ.TBkhTl/lTftjNaJhXbXTD.cUZTm', 'Be like a GOAT', 'Goat who loves long walks on the beach and hygge at the fireplace. Hook up if you are the same!', '2012-11-05', 'FEMALE', true);
 
 INSERT INTO authorization (role, goat_id)
 VALUES
