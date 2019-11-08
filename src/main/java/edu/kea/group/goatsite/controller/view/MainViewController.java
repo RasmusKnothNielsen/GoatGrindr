@@ -29,10 +29,11 @@ public class MainViewController {
         return "settings.html";
     }
 
+    //TODO: Get the information from the goat object and update it to the database.
     @PostMapping("/changeinformation")
     public String addUser(@ModelAttribute Goat goat) {
         //userService.addUser(goat);
-        return "profile.html"; //"redirect:/admin";
+        return "profile.html";
     }
 
 }
