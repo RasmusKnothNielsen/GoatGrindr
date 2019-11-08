@@ -16,11 +16,11 @@ public class Like {
     private Long id;
 
     @NotNull
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     private Goat goatLiker;
 
     @NotNull
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     private Goat goatLiked;
 
 }

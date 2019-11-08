@@ -15,11 +15,12 @@ public class Dislike {
     private Long id;
 
     @NotNull
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     private Goat goatDisliker;
 
     @NotNull
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    //TODO - Add @JsonIgnore ?
     private Goat goatDisliked;
 
 }

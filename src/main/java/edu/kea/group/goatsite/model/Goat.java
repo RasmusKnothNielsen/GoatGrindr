@@ -18,7 +18,7 @@ public class Goat {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @OnDelete(action = OnDeleteAction.CASCADE)
+    @OnDelete(action = OnDeleteAction.CASCADE) //TODO - Virker dette?
     private Long id;
 
     private String name;
