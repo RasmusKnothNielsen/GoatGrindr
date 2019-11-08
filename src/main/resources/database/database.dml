@@ -7,3 +7,10 @@ VALUES
     ('Frode', 'Frode', 'Hunter2', 'GOAT SEE GOAT DO', 'Old goat looking for other goats!', '2016-11-05', 'MALE'),
     ('Fie', 'Fie', 'Hunter2', 'Be like a GOAT', 'Goat who loves long walks on the beach and hygge at the fireplace. Hook up if you are the same!', '2012-11-05', 'FEMALE');
 
+INSERT INTO authorization (role, goat_id)
+VALUES
+    ('ADMIN', 1),
+    ('USER', 1),
+    ('USER', 2),
+    ('USER', 3),
+    ('USER', 4);
