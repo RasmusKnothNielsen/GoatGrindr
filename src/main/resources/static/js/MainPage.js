@@ -284,6 +284,10 @@ class MainPage {
         //TODO - Communicate this to DB
         console.log("I liked the goat.");
     }
+
+    settings() {
+
+    }
 }
 
 new MainPage();

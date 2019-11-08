@@ -1,8 +1,11 @@
 package edu.kea.group.goatsite.controller.view;
 
+import edu.kea.group.goatsite.model.Goat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Arrays;
@@ -19,6 +22,17 @@ public class MainViewController {
         model.addAttribute("qualities", qualities);
 
         return "test.html";
+    }
+
+    @GetMapping(value = "/settings.html")
+    public String goToSettings(){
+        return "settings.html";
+    }
+
+    @PostMapping("/changeinformation")
+    public String addUser(@ModelAttribute Goat goat) {
+        //userService.addUser(goat);
+        return "profile.html"; //"redirect:/admin";
     }
 
 }
