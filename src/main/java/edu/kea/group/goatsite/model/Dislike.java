@@ -20,7 +20,6 @@ public class Dislike {
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    //TODO - Add @JsonIgnore ?
     private Goat goatDisliked;
 
 }

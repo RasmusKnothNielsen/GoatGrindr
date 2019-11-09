@@ -15,4 +15,8 @@ public interface GoatRepository extends CrudRepository<Goat, Long> {
     @Query(value = "SELECT * FROM Goats g WHERE g.id <= 2", nativeQuery = true)
     Iterable<Goat> findTheOldTimers();
 
+    //TODO - Make proper query selecting goats not already liked/disliked by user
+    @Query(value = "SELECT * FROM Goats g", nativeQuery = true)
+    Iterable<Goat> findCandidates();
+
 }

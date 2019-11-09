@@ -1,11 +1,11 @@
 /* Built upon: LikeCarousel (c) 2019 Simone P.M. github.com/simonepm - Licensed MIT */
 class MainPage {
 
-    //TODO - Figure out how to set the data from a database instead of hardcoding
-
     constructor() {
 
         this.board = document.querySelector('body');
+
+        this.candidates = /*[[${candidates}]]*/ "";
 
         // add first two cards
         this.push();
@@ -36,15 +36,20 @@ class MainPage {
         let cardFooter = document.createElement("div");
         cardFooter.classList.add("card-footer");
 
+        // Get candidate goat
+        this.candidate = this.candidates.pop();
+
         // create the h1 holding the name and age
         let nameAgeLabel = document.createElement("h1");
         nameAgeLabel.classList.add("name-age-label");
-        nameAgeLabel.textContent = "Spartacus Canchewer, 6";
+        let goatName = this.candidate.name;
+        let goatAge = this.getAge(this.candidate.dob);
+        nameAgeLabel.textContent = goatName + ", " + goatAge;
 
         // create the h2 holding the one-liner
         let oneLiner = document.createElement(("h2"));
         oneLiner.classList.add("one-liner");
-        oneLiner.textContent = "I goat this.";
+        oneLiner.textContent = this.candidate.shortDescription;
 
         // set the structure of the "card" div
         cardImage.append(image);
@@ -227,7 +232,7 @@ class MainPage {
 
     onActionDislike() {
 
-        this.disliked()
+        this.disliked();
 
         // change the transition property
         this.topCard.style.transition = 'transform 400ms ease-in';
@@ -252,7 +257,7 @@ class MainPage {
 
     onActionLike() {
 
-        this.liked()
+        this.liked();
 
         // change the transition property
         this.topCard.style.transition = 'transform 400ms ease-in';
@@ -276,13 +281,53 @@ class MainPage {
     }
 
     disliked() {
-        //TODO - Communicate this to DB
-        console.log("I disliked the goat.");
+        let data = {};
+        data["goatDisliker"] = this.candidate; //TODO - Set this to be the user.
+        data["goatDisliked"] = this.candidate;
+        $.ajax({
+            url: "/api/dislike",
+            dataType: "text",
+            type: "post",
+            contentType: "application/json",
+            data: JSON.stringify(data),
+            success: function() {
+                console.log("Disliking worked")
+            },
+            error: function() {
+                console.log("Disliking didn't work...")
+            }
+        });
     }
 
     liked() {
-        //TODO - Communicate this to DB
-        console.log("I liked the goat.");
+        let data = {};
+        data["goatLiker"] = this.candidate; //TODO - Set this to be the user.
+        data["goatLiked"] = this.candidate;
+        $.ajax({
+            url: "/api/like",
+            dataType: "text",
+            type: "post",
+            contentType: "application/json",
+            data: JSON.stringify(data),
+            success: function() {
+                console.log("Liking worked")
+            },
+            error: function() {
+                console.log("Liking didn't work...")
+            }
+        });
+    }
+
+    getAge(DOB) {
+        let today = new Date();
+        let birthDate = new Date(DOB);
+        let age = today.getFullYear() - birthDate.getFullYear();
+        let m = today.getMonth() - birthDate.getMonth();
+        if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+            age = age - 1;
+        }
+
+        return age;
     }
 
     settings() {

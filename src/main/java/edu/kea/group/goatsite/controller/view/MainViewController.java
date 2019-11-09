@@ -1,27 +1,26 @@
 package edu.kea.group.goatsite.controller.view;
 
 import edu.kea.group.goatsite.model.Goat;
+import edu.kea.group.goatsite.repository.GoatRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
-import java.util.Arrays;
-import java.util.List;
 
 @Controller
 public class MainViewController {
 
-    @GetMapping(value = "/test")
-    public String tryTheTestPath(Model model, @RequestParam(value = "name") String visitorName) {
-        model.addAttribute("name", visitorName);
+    @Autowired
+    private GoatRepository goatRepository;
 
-        List<String> qualities = Arrays.asList("Can dance", "Can run", "Can sing");
-        model.addAttribute("qualities", qualities);
-
-        return "test.html";
+    @RequestMapping("/js/MainPage.js")
+    public String main(Model model) {
+        Iterable<Goat> candidates = goatRepository.findCandidates();
+        model.addAttribute("candidates", candidates);
+        return "../static/js/MainPage.js";
     }
 
     @GetMapping(value = "/settings.html")
