@@ -18,9 +18,16 @@ class MainPage {
 
     push() {
 
+        // get candidate goat
+        this.candidate = this.candidates.pop();
+
         // create the "card" div
         let card = document.createElement("div");
         card.classList.add("card");
+
+        // create the "cardFront" div
+        let cardFront = document.createElement("div");
+        cardFront.classList.add("card-front");
 
         // create the "card-image" div
         let cardImage = document.createElement("div");
@@ -28,16 +35,13 @@ class MainPage {
 
         // create the image for the "card-image" div
         let image = document.createElement("img");
-        image.src = "https://placegoat.com/410/410";
+        image.src = "https://placegoat.com/410/410"; // TODO - get specific image url from DB?
         image.style.width = "100%";
         image.style.height = "100%";
 
         // create the "card-footer" div
         let cardFooter = document.createElement("div");
         cardFooter.classList.add("card-footer");
-
-        // Get candidate goat
-        this.candidate = this.candidates.pop();
 
         // create the h1 holding the name and age
         let nameAgeLabel = document.createElement("h1");
@@ -46,17 +50,29 @@ class MainPage {
         let goatAge = this.getAge(this.candidate.dob);
         nameAgeLabel.textContent = goatName + ", " + goatAge;
 
-        // create the h2 holding the one-liner
-        let oneLiner = document.createElement(("h2"));
-        oneLiner.classList.add("one-liner");
-        oneLiner.textContent = this.candidate.shortDescription;
+        // create the h2 holding the short description
+        let shortDescription = document.createElement(("h2"));
+        shortDescription.classList.add("short-description");
+        shortDescription.textContent = this.candidate.shortDescription;
+
+        // create the "cardBack" div
+        let cardBack = document.createElement("div");
+        cardBack.classList.add("card-back");
+
+        // create the p holding the long description
+        let longDescription = document.createElement(("p"));
+        longDescription.classList.add("long-description");
+        longDescription.textContent = this.candidate.longDescription;
 
         // set the structure of the "card" div
         cardImage.append(image);
         cardFooter.append(nameAgeLabel);
-        cardFooter.append(oneLiner);
-        card.append(cardImage);
-        card.append(cardFooter);
+        cardFooter.append(shortDescription);
+        cardFront.append(cardImage);
+        cardFront.append(cardFooter);
+        cardBack.append(longDescription);
+        card.append(cardFront);
+        card.append(cardBack);
 
         if (this.board.firstChild) {
             this.board.insertBefore(card, this.board.firstChild)
@@ -118,16 +134,21 @@ class MainPage {
         console.log("topCard tapped");
 
         // change the transition property
-        this.topCard.style.transition = 'transform 300ms ease-out';
+        this.topCard.style.transition = 'transform 500ms ease-out';
 
         // rotate
-        this.topCard.style.transform = 'translateX(-50%) translateY(-50%) rotate(0deg) rotateY(90deg) scale(1)';
+        if(!this.isFlipped) {
+            this.topCard.style.transform = 'translateX(-50%) translateY(-50%) rotate(0deg) rotateY(180deg) scale(1)';
+            this.isFlipped = true;
 
-        // wait transition end
-        setTimeout(() => {
-            // reset transform properties
-            this.topCard.style.transform = 'translateX(-50%) translateY(-50%) rotate(0deg) rotateY(0deg) scale(1)'
-        }, 300)
+            // TODO - play mating sound here
+            // How do we handle sounds?
+
+
+        } else {
+            this.topCard.style.transform = 'translateX(-50%) translateY(-50%) rotate(0deg) rotateY(0deg) scale(1)';
+            this.isFlipped = false;
+        }
 
     }
 
@@ -281,11 +302,14 @@ class MainPage {
     }
 
     disliked() {
-        let data = {};
-        data["goatDisliker"] = this.candidate; //TODO - Set this to be the user.
-        data["goatDisliked"] = this.candidate;
+        let token = $("meta[name='_csrf']").attr("content");
+        let data = {
+            "goatDisliker": this.candidate, //TODO - Set this to be the user.
+            "goatDisliked": this.candidate
+        };
         $.ajax({
             url: "/api/dislike",
+            headers: {"X-CSRF-TOKEN": token},
             dataType: "text",
             type: "post",
             contentType: "application/json",
@@ -300,11 +324,14 @@ class MainPage {
     }
 
     liked() {
-        let data = {};
-        data["goatLiker"] = this.candidate; //TODO - Set this to be the user.
-        data["goatLiked"] = this.candidate;
+        let token = $("meta[name='_csrf']").attr("content");
+        let data = {
+            "goatLiker": this.candidate, //TODO - Set this to be the user.
+            "goatLiked": this.candidate
+        };
         $.ajax({
             url: "/api/like",
+            headers: {"X-CSRF-TOKEN": token},
             dataType: "text",
             type: "post",
             contentType: "application/json",
