@@ -59,6 +59,14 @@ class MainPage {
         let cardBack = document.createElement("div");
         cardBack.classList.add("card-back");
 
+        // create the h1 holding the back-side headline
+        let backHeadline = document.createElement(("h1"));
+        backHeadline.classList.add("back-headline");
+        backHeadline.textContent = goatName + "'s profile";
+
+        let dividerLine = document.createElement(("hr"));
+        dividerLine.classList.add("card-back-line");
+
         // create the p holding the long description
         let longDescription = document.createElement(("p"));
         longDescription.classList.add("long-description");
@@ -70,6 +78,8 @@ class MainPage {
         cardFooter.append(shortDescription);
         cardFront.append(cardImage);
         cardFront.append(cardFooter);
+        cardBack.append(backHeadline);
+        cardBack.append(dividerLine);
         cardBack.append(longDescription);
         card.append(cardFront);
         card.append(cardBack);

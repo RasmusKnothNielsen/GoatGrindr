@@ -64,8 +64,16 @@ img{
 }
 
 .card-back {
-    background-color: #FF00FF;
     transform: rotateY(180deg);
+}
+
+.card-back-line {
+    border: 1px solid #666666
+}
+
+.long-description {
+    font-size: 28px;
+    font-weight: 400;
 }
 
 .card-image img {
