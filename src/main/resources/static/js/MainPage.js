@@ -175,8 +175,11 @@ class MainPage {
             // get top card coordinates in pixels
             let style = window.getComputedStyle(this.topCard);
             let mx = style.transform.match(/^matrix\((.+)\)$/);
-            this.startPosX = mx ? parseFloat(mx[1].split(', ')[4]) : 0;
-            this.startPosY = mx ? parseFloat(mx[1].split(', ')[5]) : 0;
+            this.startPosX = mx ? parseFloat(mx[1].split(', ')[4]) : -215; //TODO - normally last value was 0, how to avoid hardcoded values?
+            this.startPosY = mx ? parseFloat(mx[1].split(', ')[5]) : -265;
+
+            console.log("startPosX: " + this.startPosX);
+            console.log("startPosY: " + this.startPosY);
 
             // get top card bounds
             let bounds = this.topCard.getBoundingClientRect();
@@ -203,8 +206,11 @@ class MainPage {
         // calculate scale ratio, between 95 and 100 %
         let scale = (95 + (5 * Math.abs(propX))) / 100;
 
+        //check if card has been flipped
+        let flip = (this.isFlipped) ? 180 : 0;
+
         // move top card
-        this.topCard.style.transform = 'translateX(' + posX + 'px) translateY(' + posY + 'px) rotate(' + deg + 'deg) rotateY(0deg) scale(1)';
+        this.topCard.style.transform = 'translateX(' + posX + 'px) translateY(' + posY + 'px) rotate(' + deg + 'deg) rotateY(' + flip + 'deg) scale(1)';
 
         // scale next card
         if (this.nextCard) this.nextCard.style.transform = 'translateX(-50%) translateY(-50%) rotate(0deg) rotateY(0deg) scale(' + scale + ')';
@@ -254,7 +260,7 @@ class MainPage {
             } else {
 
                 // reset cards position
-                this.topCard.style.transform = 'translateX(-50%) translateY(-50%) rotate(0deg) rotateY(0deg) scale(1)';
+                this.topCard.style.transform = 'translateX(-50%) translateY(-50%) rotate(0deg) rotateY(' + flip + 'deg) scale(1)';
                 if (this.nextCard) this.nextCard.style.transform = 'translateX(-50%) translateY(-50%) rotate(0deg) rotateY(0deg) scale(0.95)'
 
             }
@@ -312,6 +318,7 @@ class MainPage {
     }
 
     disliked() {
+        this.isFlipped = false;
         let token = $("meta[name='_csrf']").attr("content");
         let data = {
             "goatDisliker": this.candidate, //TODO - Set this to be the user.
@@ -334,6 +341,7 @@ class MainPage {
     }
 
     liked() {
+        this.isFlipped = false;
         let token = $("meta[name='_csrf']").attr("content");
         let data = {
             "goatLiker": this.candidate, //TODO - Set this to be the user.
