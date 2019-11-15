@@ -1,4 +1,4 @@
-Redirect til login side (Niki)
+Redirect til login side (Niki) - Done
 Fix knap (Rasmus)
 	Menu med: (Rasmus)
 		Matches
@@ -6,7 +6,7 @@ Fix knap (Rasmus)
 		Settings
 		Admin (kun synlig hvis admin login)
 Admin side
-Opret ny ged fra Login Side
+Opret ny ged fra Login Side (Niki)
 Brug informationer tilhørende indlogget ged (Thomas)
 Skriv Spring Tests
 Skriv korrekt SQL query til at finde kandidatgeder
