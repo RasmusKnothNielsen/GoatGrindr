@@ -34,9 +34,16 @@ public class MainViewController {
 
     //TODO: Get the information from the goat object and update it to the database.
     @PostMapping("/changeinformation")
-    public String addUser(@ModelAttribute Goat goat) {
+    public String profile(@ModelAttribute Goat goat) {
         //userService.addUser(goat);
         return "profile.html";
+    }
+
+    // add a new Goat to the database
+    @PostMapping("/adduser")
+    public String addUser(Goat goat) {
+        goatRepository.save(goat);
+        return "redirect:/login";
     }
 
     // Get the index file if the user is logged in, else get the login file
@@ -54,7 +61,12 @@ public class MainViewController {
                 return "index";
             }
         }
-        return null;
+        return "login";
+    }
+
+    @GetMapping("login")
+    public String login() {
+        return "login";
     }
 
 } // closing bracket for class

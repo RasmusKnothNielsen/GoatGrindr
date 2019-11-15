@@ -31,11 +31,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception
     {
         http.authorizeRequests()
-                .anyRequest().authenticated()
+                .antMatchers("/").permitAll()
+                .antMatchers("/login").permitAll()
                 .and()
-                    .formLogin().permitAll()
-                // Når vi logger ind, hvilken side skal vi så havne på?
-                    .defaultSuccessUrl("/", true);
+                    .formLogin()
+                        .loginPage("/login").permitAll()
+                        // Når vi logger ind, hvilken side skal vi så havne på?
+                        .defaultSuccessUrl("/", true)
+                        .failureUrl("/login?error")
+                .and()
+                    .logout()
+                        .logoutSuccessUrl("/").permitAll();
     }
 
 }
