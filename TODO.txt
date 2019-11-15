@@ -6,6 +6,7 @@ Fix knap
 		Settings
 		Admin (kun synlig hvis admin login)
 Admin side
+Opret ny ged fra Login Side
 Brug informationer tilhørende indlogget ged
 Skriv Spring Tests
 Skriv korrekt SQL query til at finde kandidatgeder
@@ -15,3 +16,4 @@ Lyde
 
 Bonus:
 Notifikationer for nye matches?
+Sorter efter køn, alder
