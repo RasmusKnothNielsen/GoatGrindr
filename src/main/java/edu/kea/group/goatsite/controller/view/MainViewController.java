@@ -10,14 +10,15 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import java.security.Principal;
+
 
 @Controller
 public class MainViewController {
 
     @Autowired
     private GoatRepository goatRepository;
+
 
     @RequestMapping("/js/MainPage.js")
     public String main(Model model) {
