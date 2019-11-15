@@ -9,11 +9,8 @@ public class GoatsiteApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(GoatsiteApplication.class, args);
-
-        BCryptPasswordEncoder bcpe = new BCryptPasswordEncoder();
-
-
-        System.out.println(bcpe.encode("Hunter2"));
+        //BCryptPasswordEncoder bcpe = new BCryptPasswordEncoder();
+        //System.out.println(bcpe.encode("Hunter2"));
     }
 
 }
