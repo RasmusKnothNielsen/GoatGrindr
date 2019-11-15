@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Navigation Menu</title>
+    <link rel="stylesheet" href="/stylesheet.css">
+</head>
+<body>
+<nav>
+<ul style="width: 105%; margin-left: -15px">
+    <li><a href="/">Home</a></li>
+    <li style="float:right; margin-right: 2.6%" class="dropdown">
+        <a style="alignment: left" href="javascript:void(0)" class="dropbtn">More</a>
+        <div class="dropdown-content">
+            <a href="matches.html">Matches</a>
+            <a href="profile.html">Profile</a>
+            <a href="settings.html">Settings</a>
+
+            <div sec:authorize="hasRole('ROLE_ADMIN')">
+                <a href="adminpanel.html">Admin panel</a>
+            </div>
+
+            <div sec:authorize="hasRole('ROLE_USER')">
+                <a href="userpanel.html">User panel</a>
+            </div>
+
+            <a href="/logout">Logout</a>
+        </div>
+    <li/>
+</ul>
+</nav>
+</body>
+</html>
