@@ -57,4 +57,25 @@ public class MainViewController {
         return null;
     }
 
+    @RequestMapping(value = "/matches.html", method = RequestMethod.GET)
+    public String matches(@AuthenticationPrincipal org.springframework.security.core.userdetails.User user) {
+
+        return "matches.html";
+    }
+
+    @RequestMapping(value = "/adminpanel.html", method = RequestMethod.GET)
+    public String adminPanel(@AuthenticationPrincipal org.springframework.security.core.userdetails.User user) {
+
+        // if the user authorities
+        for (GrantedAuthority authority : user.getAuthorities()) {
+            if (authority.getAuthority().equals("ROLE_ADMIN")) {
+                return "adminpanel.html";
+            }
+            if (authority.getAuthority().equals("ROLE_USER")) {
+                return "Unauthorized access"; // TODO Lav en unauthorized acces page, som vi kan vise.
+            }
+        }
+        return null;
+    }
+
 } // closing bracket for class
