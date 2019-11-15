@@ -3,12 +3,15 @@ package edu.kea.group.goatsite.controller.view;
 import edu.kea.group.goatsite.model.Goat;
 import edu.kea.group.goatsite.repository.GoatRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+
+import java.security.Principal;
 
 @Controller
 public class MainViewController {
@@ -24,7 +27,7 @@ public class MainViewController {
     }
 
     @GetMapping(value = "/settings.html")
-    public String goToSettings(){
+    public String goToSettings() {
         return "settings.html";
     }
 
@@ -35,4 +38,22 @@ public class MainViewController {
         return "profile.html";
     }
 
-}
+    // Get the index file if the user is logged in, else get the login file
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String index(@AuthenticationPrincipal org.springframework.security.core.userdetails.User user) {
+
+        // if the user or the user authorities equals null return login file
+        if (user == null || user.getAuthorities() == null) {
+            return "login";
+        }
+
+        // if the user authorities
+        for (GrantedAuthority authority : user.getAuthorities()) {
+            if (authority.getAuthority().equals("ROLE_USER")) {
+                return "index";
+            }
+        }
+        return null;
+    }
+
+} // closing bracket for class
