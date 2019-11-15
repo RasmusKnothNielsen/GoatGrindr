@@ -49,7 +49,6 @@ public class MainViewController {
     // Get the index file if the user is logged in, else get the login file
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String index(@AuthenticationPrincipal org.springframework.security.core.userdetails.User user) {
-
         // if the user or the user authorities equals null return login file
         if (user == null || user.getAuthorities() == null) {
             return "login";

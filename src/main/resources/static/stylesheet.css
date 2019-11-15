@@ -196,6 +196,11 @@ li.dropdown {
     display: inline-block;
     border-radius: 10px;
     margin-top: 20px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    box-shadow: 2px 2px 2px black;
 }
 
 .login-main {
@@ -203,7 +208,7 @@ li.dropdown {
     text-align: center;
 }
 
-input {
+.inputfield {
     height: 40px;
     text-align: center;
     border-radius: 10px;
