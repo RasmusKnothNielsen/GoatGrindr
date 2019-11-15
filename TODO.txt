@@ -1,6 +1,6 @@
 Redirect til login side
-Fix knap
-	Menu med:
+Fix knap (Rasmus)
+	Menu med: (Rasmus)
 		Matches
 		Profile
 		Settings
