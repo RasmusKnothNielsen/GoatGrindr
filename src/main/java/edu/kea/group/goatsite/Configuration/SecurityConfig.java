@@ -21,19 +21,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     {
         auth.jdbcAuthentication().dataSource(dataSource)
                 .usersByUsernameQuery("SELECT username, password, enabled FROM goats where username =?")
-                .authoritiesByUsernameQuery("SELECT goats.username AS username, authorization.role AS authority FROM goats JOIN authorization on goats.id=authorization.goat_id WHERE goats.username = ?") // Query to get the authorization from the database
+                // Query to get the authorization from the database
+                .authoritiesByUsernameQuery("SELECT goats.username AS username, authorization.role AS authority " +
+                        "FROM goats JOIN authorization on goats.id=authorization.goat_id WHERE goats.username = ?")
                 .passwordEncoder(new BCryptPasswordEncoder());
     }
-
 
     @Override
     protected void configure(HttpSecurity http) throws Exception
     {
         http.authorizeRequests()
-                .antMatchers("/").permitAll()
                 .anyRequest().authenticated()
-                .and().formLogin()
-                .defaultSuccessUrl("/", true); // Når vi logger ind, hvilken side skal vi så havne på?
+                .and()
+                    .formLogin().permitAll()
+                // Når vi logger ind, hvilken side skal vi så havne på?
+                    .defaultSuccessUrl("/", true);
     }
 
 }
