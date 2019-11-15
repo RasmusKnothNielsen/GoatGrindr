@@ -14,6 +14,7 @@ Ved like - check for matches.
 Hvordan håndterer vi matches?
 Lyde
 Hente billeder ned og gemme dem lokalt, frem for at hente dem fra gedde api'et.
+Tilføje 404 og 503 fejlkoder.
 
 Bonus:
 Notifikationer for nye matches?

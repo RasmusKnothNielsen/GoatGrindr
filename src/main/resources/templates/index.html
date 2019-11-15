@@ -9,17 +9,23 @@
 <body>
 
     <ul style="width: 105%; margin-left: -15px">
-        <li><a href="#home">Home</a></li>
+        <li><a href="/">Home</a></li>
         <li style="float:right; margin-right: 2.6%" class="dropdown">
             <a style="alignment: left" href="javascript:void(0)" class="dropbtn">More</a>
             <div class="dropdown-content">
-                <a href="#">Matches</a>
+                <a href="matches.html">Matches</a>
                 <a href="profile.html">Profile</a>
                 <a href="settings.html">Settings</a>
+
                 <div sec:authorize="hasRole('ROLE_ADMIN')">
-                    <a href="#">Admin panel</a>
+                    <a href="adminpanel.html">Admin panel</a>
                 </div>
-                <a href="/login?logout">Logout</a>
+
+                <div sec:authorize="hasRole('ROLE_USER')">
+                    <a href="userpanel.html">User panel</a>
+                </div>
+
+                <a href="/logout">Logout</a>
             </div>
         <li/>
     </ul>
@@ -32,6 +38,7 @@
         <div class="left-action"><img src="/images/dislike.png" alt="dislike" width="40" height="40"/></div>
         <div class="right-action"><img src="/images/like.png" alt="like" width="40" height="40"/></div>
     </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript" th:src="@{/js/MainPage.js}"></script>
