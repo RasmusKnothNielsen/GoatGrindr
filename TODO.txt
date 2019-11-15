@@ -7,7 +7,7 @@ Fix knap (Rasmus)
 		Admin (kun synlig hvis admin login)
 Admin side
 Opret ny ged fra Login Side (Niki)
-Brug informationer tilhørende indlogget ged
+Brug informationer tilhørende indlogget ged (Thomas)
 Skriv Spring Tests
 Skriv korrekt SQL query til at finde kandidatgeder
 Ved like - check for matches.
