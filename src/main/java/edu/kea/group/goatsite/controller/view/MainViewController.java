@@ -78,4 +78,17 @@ public class MainViewController {
         return null;
     }
 
+    @RequestMapping(value = "/userpanel.html", method = RequestMethod.GET)
+    public String userPanel() {
+        return "userpanel.html";
+    }
+
+    @RequestMapping(value = "/profile.html", method = RequestMethod.GET)
+    public String profile() {
+        return "profile.html";
+    }
+
+    // TODO add postmapping that changes the goats profile information
+
+
 } // closing bracket for class
