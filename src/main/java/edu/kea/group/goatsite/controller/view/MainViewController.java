@@ -39,13 +39,6 @@ public class MainViewController {
         return "profile.html";
     }
 
-    // add a new Goat to the database
-    @PostMapping("/adduser")
-    public String addUser(Goat goat) {
-        goatRepository.save(goat);
-        return "redirect:/login";
-    }
-
     // Get the index file if the user is logged in, else get the login file
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String index(@AuthenticationPrincipal org.springframework.security.core.userdetails.User user) {
@@ -66,6 +59,21 @@ public class MainViewController {
     @GetMapping("login")
     public String login() {
         return "login";
+    }
+
+    @GetMapping("/adduser")
+    public String addUserSite() {
+        return "adduser";
+    }
+
+    /* TODO: Get a count on the amount of goats in the goat table - increment the count number and add a row
+    *   in the role table  */
+
+    // add a new Goat to the database
+    @PostMapping("/adduser")
+    public String addUser(Goat goat) {
+        goatRepository.save(goat);
+        return "redirect:/login";
     }
 
 } // closing bracket for class

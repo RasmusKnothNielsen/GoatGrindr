@@ -5,6 +5,8 @@ import lombok.Data;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import org.hibernate.validator.constraints.Length;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
@@ -25,7 +27,8 @@ public class Goat {
 
     @NotNull
     @Past
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+//    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE, pattern = "yyyy-MM-dd")
     private Date dob;
 
     @Enumerated(EnumType.STRING)
@@ -37,7 +40,6 @@ public class Goat {
     @Length(max = 10000)
     private String longDescription;
 
-    @Email(message = "Email should be valid")
     private String username;
     private String password;
 
@@ -46,6 +48,5 @@ public class Goat {
 
     @NotNull
     private boolean enabled;
-
 
 }

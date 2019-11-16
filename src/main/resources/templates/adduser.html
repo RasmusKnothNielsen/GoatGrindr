@@ -3,18 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <title>Create Goat</title>
+    <link rel="stylesheet" href="stylesheet.css"/>
 </head>
 <body>
-<main class="login-main">
+<main class="add-user-main">
     <form name="form-login" th:action="@{'/adduser'}" method="post">
+        <input type="hidden" value="1" name="enabled"/>
+        <input type="hidden" value="ROLE_USER" name="role"/>
 
-        <input class="inputfield" type="text" name="username"
-               placeholder="Username"/>
+        <input class="inputfield" type="text" name="name"
+               placeholder="Full name"/>
+        <br>
+        <input class="inputfield" style="margin-top: 3em;" type="text" name="username"
+               placeholder="Desired username" required/>
         <br>
         <input class="inputfield" style="margin-top: 3em;" type="password" name="password"
-               placeholder="Password"/>
+               placeholder="Password" required/>
         <br>
-        <button class="btn btn-login" type="submit">Log in</button>
+        <!--TODO: Change type to date or consider how to handle anything that isn't a date -->
+        <input class="inputfield" style="margin-top: 3em;" type="text" name="dob"
+               placeholder="YYYY-MM-DD" required/>
+        <br>
+        <input class="inputfield" style="margin-top: 3em; text-transform: uppercase" type="text" name="gender"
+               placeholder="Male/Female/None"/>
+        <br>
+        <input class="inputfield" style="margin-top: 3em;" type="text" name="short_description"
+               placeholder="Short description about your goatness"/>
+        <br>
+        <textarea rows="7" cols="50" class="inputfield" style="margin-top: 3em;" name="long_description"
+                  placeholder="Long description about your goatness"></textarea>
+        <br>
+        <button class="btn btn-add-user-form" type="submit">Create account</button>
     </form>
 </main>
 </body>

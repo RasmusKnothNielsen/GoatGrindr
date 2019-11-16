@@ -1,5 +1,5 @@
 package edu.kea.group.goatsite.model;
 
 public enum  Role {
-    USER, VIP, MODERATOR, ADMIN
+    ROLE_USER, ROLE_VIP, ROLE_MODERATOR, ROLE_ADMIN
 }
