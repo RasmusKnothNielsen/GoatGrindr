@@ -27,7 +27,7 @@ public class Goat {
 
     @NotNull
     @Past
-//    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    //TODO: Add exceptionhandling if user writes a date that is after the current date or if user is above 150 years?
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE, pattern = "yyyy-MM-dd")
     private Date dob;
 
@@ -42,9 +42,6 @@ public class Goat {
 
     private String username;
     private String password;
-
-    @Enumerated(EnumType.STRING)
-    private Role role;
 
     @NotNull
     private boolean enabled;

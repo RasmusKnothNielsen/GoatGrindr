@@ -199,7 +199,17 @@ li.dropdown {
     cursor: pointer;
 }
 
-.btn:hover {
+.btn-add-user {
+    background-color: transparent;
+    text-decoration: underline;
+    padding: 2px;
+}
+
+.btn-add-user:hover {
+    color: purple;
+}
+
+.btn-login:hover {
     box-shadow: 2px 2px 2px black;
 }
 
@@ -213,4 +223,11 @@ li.dropdown {
     text-align: center;
     border-radius: 10px;
     font-size: 18px;
+    margin-top: 1.5em;
 }
+
+#username {
+    margin-top: 0;
+}
+
+

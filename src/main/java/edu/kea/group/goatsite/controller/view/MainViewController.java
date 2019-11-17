@@ -1,7 +1,9 @@
 package edu.kea.group.goatsite.controller.view;
 
+import edu.kea.group.goatsite.model.Gender;
 import edu.kea.group.goatsite.model.Goat;
 import edu.kea.group.goatsite.repository.GoatRepository;
+import edu.kea.group.goatsite.service.GoatService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -18,6 +20,9 @@ public class MainViewController {
 
     @Autowired
     private GoatRepository goatRepository;
+
+    @Autowired
+    private GoatService goatService;
 
 
     @RequestMapping("/js/MainPage.js")
@@ -71,8 +76,8 @@ public class MainViewController {
 
     // add a new Goat to the database
     @PostMapping("/adduser")
-    public String addUser(Goat goat) {
-        goatRepository.save(goat);
+    public String addOneGoat(Goat goat) {
+        goatService.addGoat(goat);
         return "redirect:/login";
     }
 

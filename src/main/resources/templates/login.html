@@ -12,10 +12,10 @@
         <div th:if="${param.error}">
             <h3>Invalid username or password</h3>
         </div>
-        <input class="inputfield" type="text" name="username"
+        <input class="inputfield" id="username" type="text" name="username"
                placeholder="Username"/>
         <br>
-        <input class="inputfield" style="margin-top: 3em;" type="password" name="password"
+        <input class="inputfield" type="password" name="password"
                placeholder="Password"/>
         <br>
         <button class="btn btn-login" type="submit">Log in</button>
