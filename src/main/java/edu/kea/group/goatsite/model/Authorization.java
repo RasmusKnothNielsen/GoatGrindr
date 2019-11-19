@@ -13,9 +13,12 @@ import java.io.Serializable;
 @Table(name = "authorization")
 public class Authorization implements Serializable {
 
-    // TODO: Add @ManyToOne annotation if possible? And necessary.
     @Id
-    private Long goat_Id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     private String role;
+
+    // TODO: Add @ManyToOne annotation if possible? And necessary.
+    private Long goat_Id;
 }

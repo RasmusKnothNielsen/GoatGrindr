@@ -1,6 +1,6 @@
 USE goats;
 
-INSERT INTO goats (name, ROLE_USERname, password, short_description, long_description, dob, gender, enabled)
+INSERT INTO goats (name, username, password, short_description, long_description, dob, gender, enabled)
 VALUES
 ('Ferdinand', 'Ferdinand', '$2a$10$eqQ86pzWC6P6oUrYcpa0fujLZ.TBkhTl/lTftjNaJhXbXTD.cUZTm', 'Dont be a sheep', 'Goat looking for a good time. Are you up for it??', '2017-03-04', 'MALE', true),
 ('Frida', 'Frida', '$2a$10$eqQ86pzWC6P6oUrYcpa0fujLZ.TBkhTl/lTftjNaJhXbXTD.cUZTm', 'Feeling cute', 'GOATGIRL LOOKING FOR AAAACTION', '2012-11-05', 'FEMALE', true),
@@ -209,7 +209,6 @@ VALUES
 
 INSERT INTO authorization (role, goat_id)
 VALUES
-
     ('ROLE_ADMIN',1),
     ('ROLE_USER', 1),
     ('ROLE_USER', 2),
