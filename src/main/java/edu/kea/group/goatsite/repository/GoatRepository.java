@@ -11,6 +11,7 @@ public interface GoatRepository extends CrudRepository<Goat, Long> {
 
     Iterable<Goat> findAllByName(String name);
     Iterable<Goat> findAllByGender(Gender gender);
+    Goat findByUsername(String username);
 
     // save() @Query to make certain the Gender is in capital letters
     @Query(value = "INSERT INTO goats (gender) VALUES (UPPER(?))", nativeQuery = true)

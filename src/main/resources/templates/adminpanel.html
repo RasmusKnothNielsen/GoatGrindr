@@ -21,11 +21,11 @@
                 <a href="adminpanel.html">Admin panel</a>
             </div>
 
-            <div sec:authorize="hasRole('ROLE_USER')">
-                <a href="userpanel.html">User panel</a>
+            <div>
+                <form name="form-logout" th:action="@{/logout}" method="post">
+                    <button class="nav-logout" type="submit">Logout</button>
+                </form>
             </div>
-
-            <a href="/logout">Logout</a>
         </div>
     <li/>
 </ul>

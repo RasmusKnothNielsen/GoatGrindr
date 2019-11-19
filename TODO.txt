@@ -1,35 +1,34 @@
 REQUIRED:
-- Update your own Goat profile
-- Swipe goats (DONE)
-- Save to the DB which goats you like/dislike
+- (DONE) Update your own Goat profile (Rasmus)
+- (DONE) Swipe goats
+- Save to the DB which goats you like/dislike (Thomas)
 - When you save a "like" to the DB check if it’s a match and create a row if it is
 
-Rette DML script til, så den passer til de nye kolonner i goats og authorization
+(DONE) Rette DML script til, så den passer til de nye kolonner i goats og authorization (Niki)
 
 Optional:
-- Carousel (DONE)
-- Admin Panel
-- Spring security (DONE)
+- (DONE) Carousel
+- Admin Panel (Niki)
+- (DONE) Spring security
 - Spring Test
 
 
 Design af oprettelsessiden.
 Sikre sig at man ikke kan oprette en ged med -alder (Efter nuværnde dato)
-Redirect til login side (Niki) - Done
-Fix knap (Rasmus)
-	Menu med: (Rasmus)
-		Matches
-		Profile
-		Settings
+(DONE) Redirect til login side (Niki)
+(DONE) Fix knap (Rasmus)
+(DONE)	Menu med: (Rasmus) (DONE)
+(DONE)		Matches (Rasmus) (DONE)
+(DONE)		Profile (Rasmus) (DONE)
+(DONE)		Settings (Rasmus) (DONE)
 
-		Admin (kun synlig hvis admin login)
-		Logout
-		    CSS til knappen
+(DONE)		Admin (kun synlig hvis admin login) (Rasmus) (DONE)
+(DONE)		Logout
+	    	    CSS til knappen
 
-		Admin (kun synlig hvis admin login) (Rasmus)
 
 Admin side
-Opret ny ged fra Login Side (Niki)
+(DONE) Opret ny ged fra Login Side (Niki)
 Brug informationer tilhørende indlogget ged (Thomas)
 Skriv Spring Tests
 Skriv korrekt SQL query til at finde kandidatgeder
