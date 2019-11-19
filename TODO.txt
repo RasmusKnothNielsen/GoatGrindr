@@ -4,6 +4,8 @@ REQUIRED:
 - Save to the DB which goats you like/dislike
 - When you save a "like" to the DB check if it’s a match and create a row if it is
 
+Rette DML script til, så den passer til de nye kolonner i goats og authorization
+
 Optional:
 - Carousel (DONE)
 - Admin Panel
