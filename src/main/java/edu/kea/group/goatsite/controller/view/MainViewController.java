@@ -81,4 +81,38 @@ public class MainViewController {
         return "redirect:/login";
     }
 
+    @RequestMapping(value = "/matches.html", method = RequestMethod.GET)
+    public String matches(@AuthenticationPrincipal org.springframework.security.core.userdetails.User user) {
+
+        return "matches.html";
+    }
+
+    @RequestMapping(value = "/adminpanel.html", method = RequestMethod.GET)
+    public String adminPanel(@AuthenticationPrincipal org.springframework.security.core.userdetails.User user) {
+
+        // if the user authorities
+        for (GrantedAuthority authority : user.getAuthorities()) {
+            if (authority.getAuthority().equals("ROLE_ADMIN")) {
+                return "adminpanel.html";
+            }
+            if (authority.getAuthority().equals("ROLE_USER")) {
+                return "Unauthorized access"; // TODO Lav en unauthorized acces page, som vi kan vise.
+            }
+        }
+        return null;
+    }
+
+    @RequestMapping(value = "/userpanel.html", method = RequestMethod.GET)
+    public String userPanel() {
+        return "userpanel.html";
+    }
+
+    @RequestMapping(value = "/profile.html", method = RequestMethod.GET)
+    public String profile() {
+        return "profile.html";
+    }
+
+    // TODO add postmapping that changes the goats profile information
+
+
 } // closing bracket for class

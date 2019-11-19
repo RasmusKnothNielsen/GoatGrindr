@@ -1,12 +1,31 @@
+REQUIRED:
+- Update your own Goat profile
+- Swipe goats (DONE)
+- Save to the DB which goats you like/dislike
+- When you save a "like" to the DB check if it’s a match and create a row if it is
+
+Optional:
+- Carousel (DONE)
+- Admin Panel
+- Spring security (DONE)
+- Spring Test
+
+
+Design af oprettelsessiden.
+Sikre sig at man ikke kan oprette en ged med -alder (Efter nuværnde dato)
 Redirect til login side (Niki) - Done
 Fix knap (Rasmus)
 	Menu med: (Rasmus)
 		Matches
 		Profile
 		Settings
+
 		Admin (kun synlig hvis admin login)
 		Logout
 		    CSS til knappen
+
+		Admin (kun synlig hvis admin login) (Rasmus)
+
 Admin side
 Opret ny ged fra Login Side (Niki)
 Brug informationer tilhørende indlogget ged (Thomas)
