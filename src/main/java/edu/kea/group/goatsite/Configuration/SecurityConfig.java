@@ -1,11 +1,13 @@
 package edu.kea.group.goatsite.Configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.sql.DataSource;
 
@@ -31,11 +33,23 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception
     {
         http.authorizeRequests()
-                .anyRequest().authenticated()
+                .antMatchers("/").permitAll()
+                .antMatchers("/login").permitAll()
                 .and()
-                    .formLogin().permitAll()
-                // Når vi logger ind, hvilken side skal vi så havne på?
-                    .defaultSuccessUrl("/", true);
+                    .formLogin()
+                        .loginPage("/login").permitAll()
+                        // Når vi logger ind, hvilken side skal vi så havne på?
+                        .defaultSuccessUrl("/", true)
+                        .failureUrl("/login?error")
+                .and()
+                    .logout()
+                        .logoutSuccessUrl("/").permitAll();
+    }
+
+    // PasswordEncoder Bean is needed to hash the password
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 
 }

@@ -19,7 +19,13 @@ Fix knap (Rasmus)
 		Matches
 		Profile
 		Settings
+
+		Admin (kun synlig hvis admin login)
+		Logout
+		    CSS til knappen
+
 		Admin (kun synlig hvis admin login) (Rasmus)
+
 Admin side
 Opret ny ged fra Login Side (Niki)
 Brug informationer tilhørende indlogget ged (Thomas)
