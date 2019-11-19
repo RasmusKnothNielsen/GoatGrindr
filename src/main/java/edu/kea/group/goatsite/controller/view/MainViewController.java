@@ -71,9 +71,6 @@ public class MainViewController {
         return "adduser";
     }
 
-    /* TODO: Get a count on the amount of goats in the goat table - increment the count number and add a row
-    *   in the role table  */
-
     // add a new Goat to the database
     @PostMapping("/adduser")
     public String addOneGoat(Goat goat) {
@@ -83,23 +80,31 @@ public class MainViewController {
 
     @RequestMapping(value = "/matches.html", method = RequestMethod.GET)
     public String matches(@AuthenticationPrincipal org.springframework.security.core.userdetails.User user) {
-
         return "matches.html";
     }
 
-    @RequestMapping(value = "/adminpanel.html", method = RequestMethod.GET)
+    // Getmapping to show the admin panel
+    @RequestMapping(value = "/adminpanel", method = RequestMethod.GET)
     public String adminPanel(@AuthenticationPrincipal org.springframework.security.core.userdetails.User user) {
 
         // if the user authorities
         for (GrantedAuthority authority : user.getAuthorities()) {
             if (authority.getAuthority().equals("ROLE_ADMIN")) {
-                return "adminpanel.html";
+                return "adminpanel";
             }
             if (authority.getAuthority().equals("ROLE_USER")) {
                 return "Unauthorized access"; // TODO Lav en unauthorized acces page, som vi kan vise.
             }
         }
         return null;
+    }
+
+    // Getmapping to get a list of all goats in the admin panel
+    @GetMapping("/listofgoats")
+    public String getListOfGoats(Model model) {
+        Iterable<Goat> getAllGoats = goatRepository.findAll();
+        model.addAttribute("getGoats", getAllGoats);
+        return "listofgoats";
     }
 
     @RequestMapping(value = "/userpanel.html", method = RequestMethod.GET)
@@ -110,6 +115,12 @@ public class MainViewController {
     @RequestMapping(value = "/profile.html", method = RequestMethod.GET)
     public String profile() {
         return "profile.html";
+    }
+
+    @PostMapping("/listofgoats")
+    public String deleteGoatById(@PathVariable Long id) {
+        goatRepository.deleteById(id);
+        return "listofgoats";
     }
 
     // TODO add postmapping that changes the goats profile information

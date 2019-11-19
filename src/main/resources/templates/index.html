@@ -18,7 +18,9 @@
                 <a href="settings.html">Settings</a>
 
                 <div sec:authorize="hasRole('ROLE_ADMIN')">
-                    <a href="adminpanel.html">Admin panel</a>
+                    <form th:action="@{/adminpanel}" method="get">
+                        <input type="submit" value="Admin panel"/>
+                    </form>
                 </div>
 
                 <div sec:authorize="hasRole('ROLE_USER')">

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>List of goats</title>
+    <link rel="stylesheet" href="stylesheet.css">
+</head>
+<body>
+<section class="admin-panel">
+    <table class="table-users-admin-panel">
+        <thead>
+        <tr>
+            <th>Username</th>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Date of Birth</th>
+            <th>Short description</th>
+            <th>Long description</th>
+            <th id="th-options">Options</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="goat : ${getGoats}">
+            <td th:text="${goat.username}"></td>
+            <td th:text="${goat.name}"></td>
+            <td th:text="${goat.gender}"></td>
+            <td th:text="${goat.dob}"></td>
+            <td th:text="${goat.shortDescription}"></td>
+            <td th:text="${goat.longDescription}"></td>
+            <td id="td-options">
+                <form th:action="@{'/listofgoats/' + ${goat.id}}" method="post">
+                    <input class="btn btn-delete-goat" type="submit" value="Delete"/>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</section>
+
+</body>
+</html>
