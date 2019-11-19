@@ -21,15 +21,33 @@
                 <a href="adminpanel.html">Admin panel</a>
             </div>
 
-            <div sec:authorize="hasRole('ROLE_USER')">
-                <a href="userpanel.html">User panel</a>
+            <div>
+                <form name="form-logout" th:action="@{/logout}" method="post">
+                    <button class="nav-logout" type="submit">Logout</button>
+                </form>
             </div>
-
-            <a href="/logout">Logout</a>
         </div>
     <li/>
 </ul>
 
 <h1>Information about the goat!</h1>
+
+<p>Change information</p>
+<form th:action="@{/changeinformation}" method="post">
+    <td style="display:none;"><input type="hidden" name="dob" th:value="${goat.dob}"></td>
+    <td><input type="text" name="username" placeholder="Username" th:value="${goat.username}"></td>
+    <td><input type="password" name="password" placeholder="Password"></td>
+    <td><input type="text" name="name" placeholder="Name" th:value="${goat.name}"></td>
+    <td><input type="text" name="shortDescription" placeholder="Short Description" th:value="${goat.shortDescription}"></td>
+    <td><textarea rows="6" cols="70" type="text" name="longDescription" th:text="${goat.longDescription}"></textarea></td>
+    <td><select name="gender">
+        <option value="MALE">Male</option>
+        <option value="FEMALE">Female</option>
+        <option value="NONE">None</option>
+    </select>
+    </td>
+    <input type="submit" value="Add information"/>
+</form>
+
 </body>
 </html>
