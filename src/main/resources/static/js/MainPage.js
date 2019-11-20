@@ -374,14 +374,15 @@ class MainPage {
             url: "/api/checkmatch",
             headers: {"X-CSRF-TOKEN": token},
             dataType: "text",
-            type: "get",
+            type: "post",
             contentType: "application/json",
             data: JSON.stringify(data),
             success: function() {
-                console.log("Stuff worked?")
+                console.log("Checking for matches worked")
+                //TODO - Is anything returned we should handle?
             },
             error: function() {
-                console.log("Stuff didn't work...?")
+                console.log("Checking for matches didn't work...")
             }
         });
 

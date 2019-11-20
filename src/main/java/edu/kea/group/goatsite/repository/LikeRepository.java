@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 public interface LikeRepository extends CrudRepository<Like, Long> {
 
     @Query(value =
-            "SELECT * likes WHERE goat_liked_id = ? AND goat_liker_id = ?",
+            "SELECT * FROM likes WHERE goat_liked_id = ? AND goat_liker_id = ?",
             nativeQuery = true)
     Iterable<Like> findMatch(Long liker, Long liked);
 
