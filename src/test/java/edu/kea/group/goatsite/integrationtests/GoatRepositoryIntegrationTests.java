@@ -60,7 +60,34 @@ public class GoatRepositoryIntegrationTests {
     @Test
     public void canChangeGoatInformation() {
 
-        /* Prepare goat whose info we want to change */
+        // given the following
+
+        Goat goat = new Goat();
+        goat.setName("Ferdinand");
+        goat.setUsername("Ferdinandos");
+        goat.setDob(new Date(2000));
+        goat.setEnabled(true);
+        goat.setGender(Gender.MALE);
+        goat.setLongDescription("Be baaaaaaahd like me!");
+        entityManager.persist(goat);
+        entityManager.flush();
+
+        String formerLongDescription = goat.getLongDescription();
+
+        // When we do the following
+        Goat goatWithChangedInformation = goatRepository.findByUsername("Ferdinandos");
+        goatWithChangedInformation.setLongDescription("Wanna be baaaaaaahd with me?!?");
+        entityManager.persist(goatWithChangedInformation);
+        entityManager.flush();
+
+        // Then we se the following
+        assertThat(formerLongDescription)
+                .isNotEqualTo(goatRepository.findByUsername("Ferdinandos"));
+
+
+        /*
+        // Prepare goat whose info we want to change
+
         // Create a goat
         Goat goat = new Goat();
         goat.setName("Ferdinand");
@@ -77,16 +104,19 @@ public class GoatRepositoryIntegrationTests {
         String formerLongDescription = goat.getLongDescription();
 
 
-        /* Start to change information and save new entity to DB */
+
+        // Start to change information and save new entity to DB
         goat = goatRepository.findByUsername("Ferdinand");
         goat.setLongDescription("Wanna be baaaaahd with me?!");
         goatRepository.save(goat);
 
 
-        /* Assert if the information has been changed */
+
+        // Assert if the information has been changed
         assertThat(formerLongDescription)
                 .isNotEqualTo(goatRepository.findByUsername("Ferdinand").getLongDescription());
 
+         */
     }
 
 }
