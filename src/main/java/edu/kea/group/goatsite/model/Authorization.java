@@ -17,8 +17,10 @@ public class Authorization implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    // TODO: Make this enum again and test if it works
     private String role;
 
     // TODO: Add @ManyToOne annotation if possible? And necessary.
-    private Long goat_Id;
+    @Column(name = "goat_id")
+    private Long goatid;
 }

@@ -41,6 +41,7 @@
             <th>Short description</th>
             <th>Long description</th>
             <th id="th-options">Options</th>
+            <th style="text-align: center">Role</th>
         </tr>
         </thead>
         <tbody>
@@ -57,6 +58,7 @@
                     <input class="btn btn-delete-goat" type="submit" value="Delete"/>
                 </form>
             </td>
+            <td style="text-align: center" th:text="${goat.authorizations[0].role}"></td>
         </tr>
         </tbody>
     </table>

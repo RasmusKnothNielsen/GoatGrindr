@@ -13,6 +13,14 @@ public interface GoatRepository extends CrudRepository<Goat, Long> {
     Iterable<Goat> findAllByGender(Gender gender);
     Goat findByUsername(String username);
 
+    // find all ROLE_USER from Authorization and all goats with the user role
+    @Query(value = "SELECT *\n" +
+            "FROM goats\n" +
+            "JOIN authorization on goats.id = authorization.goat_id\n" +
+            "WHERE goats.id = authorization.goat_id\n" +
+            "AND role = 'ROLE_USER';", nativeQuery = true)
+    Iterable<Goat> findAllByRoleAndId();
+
     // save() @Query to make certain the Gender is in capital letters
     @Query(value = "INSERT INTO goats (gender) VALUES (UPPER(?))", nativeQuery = true)
     Gender addGender(Gender gender);

@@ -1,7 +1,9 @@
 package edu.kea.group.goatsite.controller.view;
 
+import edu.kea.group.goatsite.model.Authorization;
 import edu.kea.group.goatsite.model.Gender;
 import edu.kea.group.goatsite.model.Goat;
+import edu.kea.group.goatsite.repository.AuthorizationRepository;
 import edu.kea.group.goatsite.repository.GoatRepository;
 import edu.kea.group.goatsite.service.GoatService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import java.security.Principal;
+import java.util.Optional;
 
 
 @Controller
@@ -23,6 +26,9 @@ public class MainViewController {
 
     @Autowired
     private GoatService goatService;
+
+    @Autowired
+    private AuthorizationRepository authorizationRepository;
 
 
     @RequestMapping("/js/MainPage.js")
@@ -97,7 +103,7 @@ public class MainViewController {
     // Getmapping to get a list of all goats in the admin panel
     @GetMapping("/listofgoats")
     public String getListOfGoats(Model model) {
-        Iterable<Goat> getAllGoats = goatRepository.findAll();
+        Iterable<Goat> getAllGoats = goatRepository.findAllByRoleAndId();
         model.addAttribute("getGoats", getAllGoats);
         return "listofgoats";
     }
@@ -122,13 +128,14 @@ public class MainViewController {
     // TODO add postmapping that changes the goats profile information
     // Get the updated information from our profile page, update the Goat object and save it to the database.
     @PostMapping("/changeinformation")
-    public String profile(@ModelAttribute Goat goat) {
+    public String profile(@ModelAttribute Goat goat, @ModelAttribute Authorization authorization) {
         Goat newGoat = goatRepository.findByUsername(goat.getUsername());
         newGoat.setName(goat.getName());
         newGoat.setShortDescription(goat.getShortDescription());
         newGoat.setLongDescription(goat.getLongDescription());
         newGoat.setGender(goat.getGender());
         goatRepository.save(newGoat);
+
         System.out.println(newGoat);
         return "index.html";
     }

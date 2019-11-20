@@ -1,6 +1,7 @@
 package edu.kea.group.goatsite.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
@@ -12,6 +13,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @Entity
@@ -46,4 +48,6 @@ public class Goat {
     @NotNull
     private boolean enabled;
 
+    @OneToMany(mappedBy = "goatid", fetch = FetchType.LAZY)
+    private List<Authorization> authorizations;
 }
