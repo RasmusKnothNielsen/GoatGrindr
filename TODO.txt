@@ -11,6 +11,10 @@ Optional:
 - Admin Panel (Niki)
 - (DONE) Spring security
 - Spring Test
+(DONE)    - Test if update goat works (Rasmus)
+    - Test if like / dislike works
+    - Test if matches works
+
 
 
 Design af oprettelsessiden.
