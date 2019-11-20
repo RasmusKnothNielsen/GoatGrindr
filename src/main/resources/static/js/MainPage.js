@@ -5,7 +5,7 @@ class MainPage {
 
         this.board = document.querySelector('body');
 
-        this.username = $("#username").text();
+        this.username = $("#userGoatID").text();
 
         this.user = /*[[${user}]]*/ "";
         this.candidates = /*[[${candidates}]]*/ "";
@@ -368,6 +368,23 @@ class MainPage {
                 console.log("Liking didn't work...")
             }
         });
+
+        //Check for match
+        $.ajax({
+            url: "/api/checkmatch",
+            headers: {"X-CSRF-TOKEN": token},
+            dataType: "text",
+            type: "get",
+            contentType: "application/json",
+            data: JSON.stringify(data),
+            success: function() {
+                console.log("Stuff worked?")
+            },
+            error: function() {
+                console.log("Stuff didn't work...?")
+            }
+        });
+
     }
 
     getAge(DOB) {
