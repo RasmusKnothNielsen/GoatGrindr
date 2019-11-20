@@ -43,7 +43,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         .failureUrl("/login?error")
                 .and()
                     .logout()
-                        .logoutSuccessUrl("/").permitAll();
+                        .logoutSuccessUrl("/login?logout").permitAll();
     }
 
     // PasswordEncoder Bean is needed to hash the password

@@ -18,19 +18,23 @@
             <a href="settings.html">Settings</a>
 
             <div sec:authorize="hasRole('ROLE_ADMIN')">
-                <a href="adminpanel.html">Admin panel</a>
+                <form th:action="@{/adminpanel}" method="get">
+                    <input class="nav btn-admin-panel" type="submit" value="Admin panel"/>
+                </form>
             </div>
-
             <div>
                 <form name="form-logout" th:action="@{/logout}" method="post">
-                    <button class="nav-logout" type="submit">Logout</button>
+                    <button class="nav btn-logout" type="submit">Logout</button>
                 </form>
             </div>
         </div>
     <li/>
 </ul>
-
 <h1>Welcome to ADMIN PANEL</h1>
+
+    <form th:action="@{/listofgoats}" method="get">
+        <input class="btn btn-list-of-goats" type="submit" value="List of goats"/>
+    </form>
 
 </body>
 </html>
