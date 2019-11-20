@@ -9,6 +9,8 @@ REQUIRED:
 Optional:
 - (DONE) Carousel
 - Admin Panel (Niki)
+(DONE)    - Delete goat
+        - Change role of Goat, ROLE_USER to ROLE_ADMIN
 - (DONE) Spring security
 - Spring Test
 (DONE)    - Test if update goat works (Rasmus)
@@ -45,3 +47,4 @@ Tilføje 404 og 503 fejlkoder.
 Bonus:
 Notifikationer for nye matches?
 Sorter efter køn, alder
+Bekræftelsesbesked for at slette en bruger

@@ -9,8 +9,13 @@
 <body>
 <main class="login-main">
     <form name="form-login" th:action="@{/login}" method="post">
+        <!-- show notification on error refers to the url "/login?error-->
         <div th:if="${param.error}">
             <h3>Invalid username or password</h3>
+        </div>
+        <!-- show notification of logout - refers to the url "/login?logout -->
+        <div th:if="${param.logout}">
+            <h3>You have been logged out</h3>
         </div>
         <input class="inputfield" id="username" type="text" name="username"
                placeholder="Username"/>

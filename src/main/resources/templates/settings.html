@@ -19,13 +19,12 @@
 
             <div sec:authorize="hasRole('ROLE_ADMIN')">
                 <form th:action="@{/adminpanel}" method="get">
-                    <input type="submit" value="Admin panel"/>
+                    <input class="nav btn-admin-panel" type="submit" value="Admin panel"/>
                 </form>
             </div>
-
             <div>
                 <form name="form-logout" th:action="@{/logout}" method="post">
-                    <button class="nav-logout" type="submit">Logout</button>
+                    <button class="nav btn-logout" type="submit">Logout</button>
                 </form>
             </div>
         </div>

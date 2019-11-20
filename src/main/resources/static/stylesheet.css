@@ -8,8 +8,6 @@ body {
     background-image: linear-gradient(to right, #FFA600, #FFC500);
 }
 
-
-
 #logo {
     display: block;
     margin-left: auto;
@@ -218,6 +216,20 @@ li.dropdown {
     text-align: center;
 }
 
+.nav {
+    background-color: transparent;
+    padding: 10px;
+    border: none;
+    margin-left: 2.6%;
+    width: 95%;
+    text-align: left;
+    cursor: pointer;
+}
+
+.nav:hover {
+    background-color: #f1f1f1;
+}
+
 .inputfield {
     height: 40px;
     text-align: center;
@@ -273,4 +285,11 @@ th {
     text-align: center;
 }
 
+.admin-panel-goat-id {
+    width: 30px;
+}
+
+.btn-delete-goat {
+    margin: 2px;
+}
 

@@ -6,10 +6,34 @@
     <link rel="stylesheet" href="stylesheet.css">
 </head>
 <body>
+
+<ul style="width: 105%; margin-left: -15px">
+    <li><a href="/">Home</a></li>
+    <li style="float:right; margin-right: 2.6%" class="dropdown">
+        <a style="alignment: left" href="javascript:void(0)" class="dropbtn">More</a>
+        <div class="dropdown-content">
+            <a href="matches.html">Matches</a>
+            <a href="profile.html">Profile</a>
+            <a href="settings.html">Settings</a>
+
+            <div sec:authorize="hasRole('ROLE_ADMIN')">
+                <form th:action="@{/adminpanel}" method="get">
+                    <input class="nav btn-admin-panel" type="submit" value="Admin panel"/>
+                </form>
+            </div>
+            <div>
+                <form name="form-logout" th:action="@{/logout}" method="post">
+                    <button class="nav btn-logout" type="submit">Logout</button>
+                </form>
+            </div>
+        </div>
+    <li/>
+</ul>
 <section class="admin-panel">
     <table class="table-users-admin-panel">
         <thead>
         <tr>
+            <th class="admin-panel-goat-id">Id</th>
             <th>Username</th>
             <th>Name</th>
             <th>Gender</th>
@@ -21,6 +45,7 @@
         </thead>
         <tbody>
         <tr th:each="goat : ${getGoats}">
+            <td class="admin-panel-goat-id" th:text="${goat.id}"></td>
             <td th:text="${goat.username}"></td>
             <td th:text="${goat.name}"></td>
             <td th:text="${goat.gender}"></td>
