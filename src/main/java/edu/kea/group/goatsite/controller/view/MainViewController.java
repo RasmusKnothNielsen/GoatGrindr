@@ -37,12 +37,7 @@ public class MainViewController {
         return "settings.html";
     }
 
-    //TODO: Get the information from the goat object and update it to the database.
-    @PostMapping("/changeinformation")
-    public String profile(@ModelAttribute Goat goat) {
-        //userService.addUser(goat);
-        return "profile.html";
-    }
+
 
     // Get the index file if the user is logged in, else get the login file
     @RequestMapping(value = "/", method = RequestMethod.GET)
@@ -113,7 +108,8 @@ public class MainViewController {
     }
 
     @RequestMapping(value = "/profile.html", method = RequestMethod.GET)
-    public String profile() {
+    public String profile(Model model, @AuthenticationPrincipal org.springframework.security.core.userdetails.User user) {
+        model.addAttribute("goat", goatRepository.findByUsername(user.getUsername()));
         return "profile.html";
     }
 
@@ -124,6 +120,18 @@ public class MainViewController {
     }
 
     // TODO add postmapping that changes the goats profile information
+    // Get the updated information from our profile page, update the Goat object and save it to the database.
+    @PostMapping("/changeinformation")
+    public String profile(@ModelAttribute Goat goat) {
+        Goat newGoat = goatRepository.findByUsername(goat.getUsername());
+        newGoat.setName(goat.getName());
+        newGoat.setShortDescription(goat.getShortDescription());
+        newGoat.setLongDescription(goat.getLongDescription());
+        newGoat.setGender(goat.getGender());
+        goatRepository.save(newGoat);
+        System.out.println(newGoat);
+        return "index.html";
+    }
 
 
 } // closing bracket for class
