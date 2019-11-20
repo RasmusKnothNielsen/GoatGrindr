@@ -117,10 +117,10 @@ public class MainViewController {
         return "profile.html";
     }
 
-    @PostMapping("/listofgoats")
+    @PostMapping("/listofgoats/{id}")
     public String deleteGoatById(@PathVariable Long id) {
         goatRepository.deleteById(id);
-        return "listofgoats";
+        return "redirect:/listofgoats";
     }
 
     // TODO add postmapping that changes the goats profile information
