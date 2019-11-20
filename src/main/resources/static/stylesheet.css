@@ -8,6 +8,10 @@ body {
     background-image: linear-gradient(to right, #FFA600, #FFC500);
 }
 
+#userGoatID {
+    display: none;
+}
+
 #logo {
     display: block;
     margin-left: auto;
