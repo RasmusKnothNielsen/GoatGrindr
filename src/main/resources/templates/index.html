@@ -8,28 +8,28 @@
 </head>
 <body>
 
-    <ul style="width: 105%; margin-left: -15px">
-        <li><a href="/">Home</a></li>
-        <li style="float:right; margin-right: 2.6%" class="dropdown">
-            <a style="alignment: left" href="javascript:void(0)" class="dropbtn">More</a>
-            <div class="dropdown-content">
-                <a href="matches.html">Matches</a>
-                <a href="profile.html">Profile</a>
-                <a href="settings.html">Settings</a>
+<ul style="width: 105%; margin-left: -15px">
+    <li><a href="/">Home</a></li>
+    <li style="float:right; margin-right: 2.6%" class="dropdown">
+        <a style="alignment: left" href="javascript:void(0)" class="dropbtn">More</a>
+        <div class="dropdown-content">
+            <a href="matches.html">Matches</a>
+            <a href="profile.html">Profile</a>
+            <a href="settings.html">Settings</a>
 
-                <div sec:authorize="hasRole('ROLE_ADMIN')">
-                    <a href="adminpanel.html">Admin panel</a>
-                </div>
-
-                <div>
-                    <form name="form-logout" th:action="@{/logout}" method="post">
-                        <button class="nav-logout" type="submit">Logout</button>
-                    </form>
-                </div>
+            <div sec:authorize="hasRole('ROLE_ADMIN')">
+                <form th:action="@{/adminpanel}" method="get">
+                    <input class="nav btn-admin-panel" type="submit" value="Admin panel"/>
+                </form>
             </div>
-        <li/>
-    </ul>
-
+            <div>
+                <form name="form-logout" th:action="@{/logout}" method="post">
+                    <button class="nav btn-logout" type="submit">Logout</button>
+                </form>
+            </div>
+        </div>
+    <li/>
+</ul>
     <img id="logo" src="/images/logo.png" alt="logo"/>
 
     <!-- <div class="settings-action" onclick="window.location.href='settings.html'"><img src="images/dropdown_arrow.png" alt="settings" width="40", height="40"/></div>
