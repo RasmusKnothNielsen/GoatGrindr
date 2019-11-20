@@ -5,6 +5,7 @@ import edu.kea.group.goatsite.model.Goat;
 import edu.kea.group.goatsite.repository.GoatRepository;
 import edu.kea.group.goatsite.service.GoatService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -12,6 +13,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
 
 
@@ -123,7 +127,6 @@ public class MainViewController {
         return "redirect:/listofgoats";
     }
 
-    // TODO add postmapping that changes the goats profile information
     // Get the updated information from our profile page, update the Goat object and save it to the database.
     @PostMapping("/changeinformation")
     public String profile(@ModelAttribute Goat goat) {
