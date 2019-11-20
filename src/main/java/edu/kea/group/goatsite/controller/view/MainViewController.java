@@ -30,8 +30,12 @@ public class MainViewController {
 
 
     @RequestMapping("/js/MainPage.js")
-    public String main(Model model) {
-        Iterable<Goat> candidates = goatRepository.findCandidates();
+    public String main(Model model, Principal principal) {
+        Goat user = goatRepository.findByUsername(principal.getName());
+        Long userId = user.getId();
+        Iterable<Goat> candidates = goatRepository.findCandidates(userId, userId, userId); //TODO - Find a way to avoid this in SQL Statement
+
+        model.addAttribute("user", user);
         model.addAttribute("candidates", candidates);
         return "../static/js/MainPage.js";
     }

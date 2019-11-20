@@ -42,7 +42,7 @@ Ved like - check for matches.
 Hvordan håndterer vi matches?
 Lyde
 Hente billeder ned og gemme dem lokalt, frem for at hente dem fra gedde api'et.
-(DONE) Tilføje 404 og 503 fejlkoder. (Rasmus)
+(DONE) Tilføje 404 og 501 fejlkoder. (Rasmus)
 
 Bonus:
 Notifikationer for nye matches?
