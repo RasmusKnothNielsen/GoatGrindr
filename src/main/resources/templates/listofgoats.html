@@ -59,6 +59,11 @@
                 </form>
             </td>
             <td style="text-align: center" th:text="${goat.authorizations[0].role}"></td>
+            <td>
+                <form th:action="@{'/changerole/' + ${goat.id}}" method="post">
+                    <input type="submit" value="Make Admin"/>
+                </form>
+            </td>
         </tr>
         </tbody>
     </table>

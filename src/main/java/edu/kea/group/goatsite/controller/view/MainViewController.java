@@ -134,10 +134,10 @@ public class MainViewController {
         return "index.html";
     }
 
-//    @PostMapping("/changerole/{id}")
-//    public String changeRole(@PathVariable Long id) {
-//        authorizationRepository.setRoleToAdmin(id);
-//        return "redirect:/listofgoats";
-//    }
+    @PostMapping("/changerole/{ids}")
+    public String changeRole(@PathVariable Long ids) {
+        authorizationRepository.setRoleToAdmin(ids);
+        return "redirect:/listofgoats";
+    }
 
 } // closing bracket for class
