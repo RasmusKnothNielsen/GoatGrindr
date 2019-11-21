@@ -15,11 +15,11 @@ public class Match {
     private Long id;
 
     @NotNull
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Goat goat1Id;
 
     @NotNull
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Goat goat2Id;
 
 }

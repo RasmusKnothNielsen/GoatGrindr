@@ -1,15 +1,10 @@
 package edu.kea.group.goatsite.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import java.util.Date;
@@ -22,7 +17,6 @@ public class Goat {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @OnDelete(action = OnDeleteAction.CASCADE) //TODO - Virker dette?
     private Long id;
 
     private String name;
@@ -48,6 +42,12 @@ public class Goat {
     @NotNull
     private boolean enabled;
 
-    @OneToMany(mappedBy = "goatid", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "goatid", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Authorization> authorizations;
+
+    @OneToMany(mappedBy = "goatLiker", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Like> likes;
+
+    @OneToMany(mappedBy = "goatDisliker", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Dislike> dislikes;
 }

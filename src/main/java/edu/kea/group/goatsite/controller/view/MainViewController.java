@@ -3,6 +3,7 @@ package edu.kea.group.goatsite.controller.view;
 import edu.kea.group.goatsite.model.Goat;
 import edu.kea.group.goatsite.repository.AuthorizationRepository;
 import edu.kea.group.goatsite.repository.GoatRepository;
+import edu.kea.group.goatsite.service.AuthorizationService;
 import edu.kea.group.goatsite.service.GoatService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,6 +30,9 @@ public class MainViewController {
 
     @Autowired
     private AuthorizationRepository authorizationRepository;
+
+    @Autowired
+    private AuthorizationService authorizationService;
 
 
     @RequestMapping("/js/MainPage.js")
@@ -142,9 +146,9 @@ public class MainViewController {
         return "index.html";
     }
 
-    @PostMapping("/changerole/{ids}")
-    public String changeRole(@PathVariable Long ids) {
-        authorizationRepository.setRoleToAdmin(ids);
+    @PostMapping("/changerole/{id}")
+    public String changeRole(@PathVariable Long id) {
+        authorizationService.changeRole(id);
         return "redirect:/listofgoats";
     }
 
