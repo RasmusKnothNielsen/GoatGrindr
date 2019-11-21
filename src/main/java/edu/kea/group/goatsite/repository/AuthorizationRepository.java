@@ -11,4 +11,10 @@ import java.util.Optional;
 
 @Repository
 public interface AuthorizationRepository extends CrudRepository<Authorization, Long> {
+
+//    // SELECT specific goat by id and change role from user to admin
+//    @Query(value = "INSERT IGNORE INTO authorization (goat_id, role)\n" +
+//            "VALUES (?, 'ROLE_ADMIN')", nativeQuery = true)
+//    Authorization setRoleToAdmin(Long id);
+
 }
