@@ -14,7 +14,6 @@
         <div class="dropdown-content">
             <a href="matches.html">Matches</a>
             <a href="profile.html">Profile</a>
-            <a href="settings.html">Settings</a>
 
             <div sec:authorize="hasRole('ROLE_ADMIN')">
                 <form th:action="@{/adminpanel}" method="get">

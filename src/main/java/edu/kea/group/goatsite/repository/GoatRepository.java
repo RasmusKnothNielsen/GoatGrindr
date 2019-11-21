@@ -24,7 +24,7 @@ public interface GoatRepository extends CrudRepository<Goat, Long> {
             "SELECT * FROM goats WHERE goats.id NOT IN " +
             "(SELECT goat_liked_id FROM likes WHERE goat_liker_id = ?) AND goats.id NOT IN" + //Liked
             "(SELECT goat_disliked_id FROM dislikes WHERE goat_disliker_id = ?) AND " + //Disliked
-            "goats.id != 1", //Yourself
+            "goats.id != ?", //Yourself
             nativeQuery = true)
     Iterable<Goat> findCandidates(Long userId1, Long userId2, Long userId3); //TODO - Avoid repeating. How?
 

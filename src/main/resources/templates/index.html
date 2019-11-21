@@ -17,7 +17,6 @@
         <div class="dropdown-content">
             <a href="matches.html">Matches</a>
             <a href="profile.html">Profile</a>
-            <a href="settings.html">Settings</a>
 
             <div sec:authorize="hasRole('ROLE_ADMIN')">
                 <form th:action="@{/adminpanel}" method="get">
@@ -34,8 +33,6 @@
 </ul>
     <img id="logo" src="/images/logo.png" alt="logo"/>
 
-    <!-- <div class="settings-action" onclick="window.location.href='settings.html'"><img src="images/dropdown_arrow.png" alt="settings" width="40", height="40"/></div>
-    -->
     <div class="global-actions">
         <div class="left-action"><img src="/images/dislike.png" alt="dislike" width="40" height="40"/></div>
         <div class="right-action"><img src="/images/like.png" alt="like" width="40" height="40"/></div>
