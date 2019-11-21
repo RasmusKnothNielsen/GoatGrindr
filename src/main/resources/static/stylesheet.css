@@ -295,5 +295,11 @@ th {
 
 .btn-delete-goat {
     margin: 2px;
+    width: 75%;
+}
+
+.btn-change-role-to-admin {
+    margin: 2px;
+    width: 75%;
 }
 

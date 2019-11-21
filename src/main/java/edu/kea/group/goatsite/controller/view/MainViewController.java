@@ -1,7 +1,9 @@
 package edu.kea.group.goatsite.controller.view;
 
 import edu.kea.group.goatsite.model.Goat;
+import edu.kea.group.goatsite.repository.AuthorizationRepository;
 import edu.kea.group.goatsite.repository.GoatRepository;
+import edu.kea.group.goatsite.service.AuthorizationService;
 import edu.kea.group.goatsite.service.GoatService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -20,6 +22,9 @@ public class MainViewController {
 
     @Autowired
     private GoatService goatService;
+
+    @Autowired
+    private AuthorizationService authorizationService;
 
 
     @RequestMapping("/js/MainPage.js")
@@ -91,7 +96,7 @@ public class MainViewController {
     // Getmapping to get a list of all goats in the admin panel
     @GetMapping("/listofgoats")
     public String getListOfGoats(Model model) {
-        Iterable<Goat> getAllGoats = goatRepository.findAll();
+        Iterable<Goat> getAllGoats = goatRepository.findAllByRoleAndId();
         model.addAttribute("getGoats", getAllGoats);
         return "listofgoats";
     }
@@ -125,5 +130,11 @@ public class MainViewController {
         return "index.html";
     }
 
+    // change the role of a user to admin
+    @PostMapping("/changerole/{id}")
+    public String changeRole(@PathVariable Long id) {
+        authorizationService.changeRole(id);
+        return "redirect:/listofgoats";
+    }
 
 } // closing bracket for class

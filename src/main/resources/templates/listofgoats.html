@@ -39,6 +39,7 @@
             <th>Date of Birth</th>
             <th>Short description</th>
             <th>Long description</th>
+            <th style="text-align: center">Role</th>
             <th id="th-options">Options</th>
         </tr>
         </thead>
@@ -51,7 +52,11 @@
             <td th:text="${goat.dob}"></td>
             <td th:text="${goat.shortDescription}"></td>
             <td th:text="${goat.longDescription}"></td>
+            <td style="text-align: center"> <div th:each="a : ${goat.authorizations}" th:text="${a.role}"></div> </td>
             <td id="td-options">
+                <form th:action="@{'/changerole/' + ${goat.id}}" method="post">
+                    <input class="btn btn-change-role-to-admin" type="submit" value="Make Admin"/>
+                </form>
                 <form th:action="@{'/listofgoats/' + ${goat.id}}" method="post">
                     <input class="btn btn-delete-goat" type="submit" value="Delete"/>
                 </form>
