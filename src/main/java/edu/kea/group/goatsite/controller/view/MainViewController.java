@@ -5,11 +5,17 @@ import edu.kea.group.goatsite.repository.AuthorizationRepository;
 import edu.kea.group.goatsite.repository.GoatRepository;
 import edu.kea.group.goatsite.service.GoatService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.http.HttpServletRequest;
+import java.security.Principal;
 
 
 @Controller
@@ -26,8 +32,12 @@ public class MainViewController {
 
 
     @RequestMapping("/js/MainPage.js")
-    public String main(Model model) {
-        Iterable<Goat> candidates = goatRepository.findCandidates();
+    public String main(Model model, Principal principal) {
+        Goat user = goatRepository.findByUsername(principal.getName());
+        Long userId = user.getId();
+        Iterable<Goat> candidates = goatRepository.findCandidates(userId, userId, userId); //TODO - Find a way to avoid this in SQL Statement
+
+        model.addAttribute("user", user);
         model.addAttribute("candidates", candidates);
         return "../static/js/MainPage.js";
     }
@@ -119,7 +129,6 @@ public class MainViewController {
         return "redirect:/listofgoats";
     }
 
-    // TODO add postmapping that changes the goats profile information
     // Get the updated information from our profile page, update the Goat object and save it to the database.
     @PostMapping("/changeinformation")
     public String profile(@ModelAttribute Goat goat) {
@@ -129,7 +138,6 @@ public class MainViewController {
         newGoat.setLongDescription(goat.getLongDescription());
         newGoat.setGender(goat.getGender());
         goatRepository.save(newGoat);
-
         System.out.println(newGoat);
         return "index.html";
     }

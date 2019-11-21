@@ -7,11 +7,11 @@ REQUIRED:
 (DONE) Rette DML script til, så den passer til de nye kolonner i goats og authorization (Niki)
 
 Optional:
-- (DONE) Carousel
+(DONE)- Carousel
 - Admin Panel (Niki)
 (DONE)    - Delete goat
         - Change role of Goat, ROLE_USER to ROLE_ADMIN
-- (DONE) Spring security
+(DONE) - Spring security
 - Spring Test
 (DONE)    - Test if update goat works (Rasmus)
     - Test if like / dislike works
@@ -42,7 +42,7 @@ Ved like - check for matches.
 Hvordan håndterer vi matches?
 Lyde
 Hente billeder ned og gemme dem lokalt, frem for at hente dem fra gedde api'et.
-Tilføje 404 og 503 fejlkoder.
+(DONE) Tilføje 404 og 501 fejlkoder. (Rasmus)
 
 Bonus:
 Notifikationer for nye matches?

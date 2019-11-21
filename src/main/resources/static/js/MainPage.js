@@ -5,6 +5,9 @@ class MainPage {
 
         this.board = document.querySelector('body');
 
+        this.username = $("#userGoatID").text();
+
+        this.user = /*[[${user}]]*/ "";
         this.candidates = /*[[${candidates}]]*/ "";
 
         // add first two cards
@@ -17,6 +20,10 @@ class MainPage {
     }
 
     push() {
+
+        if(this.candidate) {
+            this.currentCandidate = this.candidate;
+        }
 
         // get candidate goat
         this.candidate = this.candidates.pop();
@@ -321,8 +328,8 @@ class MainPage {
         this.isFlipped = false;
         let token = $("meta[name='_csrf']").attr("content");
         let data = {
-            "goatDisliker": this.candidate, //TODO - Set this to be the user.
-            "goatDisliked": this.candidate
+            "goatDisliker": this.user,
+            "goatDisliked": this.currentCandidate
         };
         $.ajax({
             url: "/api/dislike",
@@ -344,8 +351,8 @@ class MainPage {
         this.isFlipped = false;
         let token = $("meta[name='_csrf']").attr("content");
         let data = {
-            "goatLiker": this.candidate, //TODO - Set this to be the user.
-            "goatLiked": this.candidate
+            "goatLiker": this.user,
+            "goatLiked": this.currentCandidate
         };
         $.ajax({
             url: "/api/like",
@@ -361,6 +368,24 @@ class MainPage {
                 console.log("Liking didn't work...")
             }
         });
+
+        //Check for match
+        $.ajax({
+            url: "/api/checkmatch",
+            headers: {"X-CSRF-TOKEN": token},
+            dataType: "text",
+            type: "post",
+            contentType: "application/json",
+            data: JSON.stringify(data),
+            success: function() {
+                console.log("Checking for matches worked")
+                //TODO - Is anything returned we should handle?
+            },
+            error: function() {
+                console.log("Checking for matches didn't work...")
+            }
+        });
+
     }
 
     getAge(DOB) {
@@ -380,5 +405,6 @@ class MainPage {
     }
 }
 
-new MainPage();
-
+$(document).ready(function(){
+    new MainPage();
+});
