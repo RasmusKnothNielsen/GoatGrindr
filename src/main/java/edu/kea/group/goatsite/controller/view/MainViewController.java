@@ -29,9 +29,6 @@ public class MainViewController {
     private GoatService goatService;
 
     @Autowired
-    private AuthorizationRepository authorizationRepository;
-
-    @Autowired
     private AuthorizationService authorizationService;
 
 
@@ -146,6 +143,7 @@ public class MainViewController {
         return "index.html";
     }
 
+    // change the role of a user to admin
     @PostMapping("/changerole/{id}")
     public String changeRole(@PathVariable Long id) {
         authorizationService.changeRole(id);
