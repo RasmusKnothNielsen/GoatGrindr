@@ -106,7 +106,7 @@ public class MainViewController {
                 return "adminpanel";
             }
             if (authority.getAuthority().equals("ROLE_USER")) {
-                return "Unauthorized access"; // TODO Lav en unauthorized acces page, som vi kan vise.
+                return "Unauthorized_access";
             }
         }
         return null;
