@@ -46,7 +46,7 @@
             <td th:text="${match.goat1Id.username}"></td>
             <td th:text="${match.goat2Id.username}"></td>
             <td id="td-show-goat">
-                <form th:action="@{'/showGoat'}" method="get">
+                <form th:action="@{'/showgoat/' + ${match.goat2Id.username}}" method="get">
                     <input class="btn btn-show-goat" type="submit" value="Show profile"/>
                 </form>
             </td>

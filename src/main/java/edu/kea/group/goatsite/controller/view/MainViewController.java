@@ -121,9 +121,9 @@ public class MainViewController {
     }
 
     @GetMapping("/showgoat/{username}")
-    public String showGoat(@PathVariable Long id, Model model) {
-        Optional<Goat> goat = goatRepository.findById(id);
-        model.addAttribute("goat", goat);
+    public String showGoat(@PathVariable String username, Model model) {
+        Goat goat = goatRepository.findByUsername(username);
+        model.addAttribute("getGoat", goat);
         return "showgoat.html";
 
     }
