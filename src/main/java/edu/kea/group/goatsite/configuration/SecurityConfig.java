@@ -1,4 +1,4 @@
-package edu.kea.group.goatsite.Configuration;
+package edu.kea.group.goatsite.configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

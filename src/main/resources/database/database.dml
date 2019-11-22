@@ -207,7 +207,7 @@ VALUES
 ('Jeanetta Lewter', 'Jeanetta Lewter', '$2a$10$eqQ86pzWC6P6oUrYcpa0fujLZ.TBkhTl/lTftjNaJhXbXTD.cUZTm', 'Dont be a sheep', 'Wise people think all they say, fools say all they think.', '2006-01-04', 'FEMALE', true),
 ('Ebony Mcgaughy', 'Ebony Mcgaughy', '$2a$10$eqQ86pzWC6P6oUrYcpa0fujLZ.TBkhTl/lTftjNaJhXbXTD.cUZTm', 'Greatest of all time', 'One tequila, two tequila, three tequila, floor.', '2007-02-24', 'FEMALE', true);
 
-INSERT INTO authorization (role, goat_id)
+INSERT INTO authorizations (role, goat_id)
 VALUES
     ('ROLE_ADMIN',1),
     ('ROLE_USER', 1),

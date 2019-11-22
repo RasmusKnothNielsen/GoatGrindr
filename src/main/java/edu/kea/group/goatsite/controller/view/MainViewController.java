@@ -1,8 +1,7 @@
 package edu.kea.group.goatsite.controller.view;
 
 import edu.kea.group.goatsite.model.Goat;
-import edu.kea.group.goatsite.repository.AuthorizationRepository;
-import edu.kea.group.goatsite.repository.GoatRepository;
+import edu.kea.group.goatsite.repository.*;
 import edu.kea.group.goatsite.service.AuthorizationService;
 import edu.kea.group.goatsite.service.GoatService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +17,19 @@ import java.security.Principal;
 public class MainViewController {
 
     @Autowired
+    private AuthorizationRepository authorizationRepository;
+
+    @Autowired
+    private DislikeRepository dislikeRepository;
+
+    @Autowired
     private GoatRepository goatRepository;
+
+    @Autowired
+    private LikeRepository likeRepository;
+
+    @Autowired
+    private MatchRepository matchRepository;
 
     @Autowired
     private GoatService goatService;
@@ -114,6 +125,10 @@ public class MainViewController {
 
     @PostMapping("/listofgoats/{id}")
     public String deleteGoatById(@PathVariable Long id) {
+        authorizationRepository.deleteAllByGoatId(id);
+        dislikeRepository.deleteAllByGoatId(id, id);
+        likeRepository.deleteAllByGoatId(id, id);
+        matchRepository.deleteAllByGoatId(id, id);
         goatRepository.deleteById(id);
         return "redirect:/listofgoats";
     }

@@ -40,11 +40,6 @@ public class GoatApiController {
         }
     }
 
-    @GetMapping("/goats/oldtimers")
-    public Iterable<Goat> getOldTimers() {
-        return goatRepository.findTheOldTimers();
-    }
-
     @PostMapping("/goats")
     public Goat createGoat(@Valid @RequestBody Goat goat){
         return goatRepository.save(goat);

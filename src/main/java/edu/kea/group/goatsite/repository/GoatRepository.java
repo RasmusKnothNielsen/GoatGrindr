@@ -16,8 +16,8 @@ public interface GoatRepository extends CrudRepository<Goat, Long> {
     // find all ROLE_USER from Authorization and all goats with the user role
     @Query(value = "SELECT *\n" +
             "FROM goats\n" +
-            "JOIN authorization on goats.id = authorization.goat_id\n" +
-            "WHERE goats.id = authorization.goat_id\n" +
+            "JOIN authorizations on goats.id = authorizations.goat_id\n" +
+            "WHERE goats.id = authorizations.goat_id\n" +
             "AND role = 'ROLE_USER';", nativeQuery = true)
     Iterable<Goat> findAllByRoleAndId();
 
