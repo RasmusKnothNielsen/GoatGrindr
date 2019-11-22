@@ -33,5 +33,32 @@
 
 <h1>This page shows matches!</h1>
 
+<section class="matches">
+    <table class="table-matches">
+        <thead>
+        <tr>
+            <th>Goat1</th>
+            <th>Goat2</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="match : ${getMatches}">
+            <td th:text="${match.goat1Id.username}"></td>
+            <td th:text="${match.goat2Id.username}"></td>
+            <td id="td-show-goat">
+                <form th:action="@{'/showGoat'}" method="get">
+                    <input class="btn btn-show-goat" type="submit" value="Show profile"/>
+                </form>
+            </td>
+            <td id="td-delete">
+                <form th:action="@{'/chat'}" method="get">
+                    <input class="btn btn-delete-goat" type="submit" value="Chat"/>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</section>
+
 </body>
 </html>

@@ -2,7 +2,9 @@ package edu.kea.group.goatsite.controller.view;
 
 import edu.kea.group.goatsite.model.Gender;
 import edu.kea.group.goatsite.model.Goat;
+import edu.kea.group.goatsite.model.Match;
 import edu.kea.group.goatsite.repository.GoatRepository;
+import edu.kea.group.goatsite.repository.MatchRepository;
 import edu.kea.group.goatsite.service.GoatService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,11 +14,13 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
+import java.util.Optional;
 
 
 @Controller
@@ -27,6 +31,9 @@ public class MainViewController {
 
     @Autowired
     private GoatService goatService;
+
+    @Autowired
+    private MatchRepository matchRepository;
 
 
     @RequestMapping("/js/MainPage.js")
@@ -82,7 +89,10 @@ public class MainViewController {
     }
 
     @RequestMapping(value = "/matches.html", method = RequestMethod.GET)
-    public String matches(@AuthenticationPrincipal org.springframework.security.core.userdetails.User user) {
+    public String matches(Model model, @AuthenticationPrincipal org.springframework.security.core.userdetails.User user) {
+        Goat goat = goatRepository.findByUsername(user.getUsername());
+        Iterable<Match> getAllMatches = matchRepository.findMatchByGoat1Id(goat);
+        model.addAttribute("getMatches", getAllMatches);
         return "matches.html";
     }
 
@@ -109,6 +119,15 @@ public class MainViewController {
         model.addAttribute("getGoats", getAllGoats);
         return "listofgoats";
     }
+
+    @GetMapping("/showgoat/{username}")
+    public String showGoat(@PathVariable Long id, Model model) {
+        Optional<Goat> goat = goatRepository.findById(id);
+        model.addAttribute("goat", goat);
+        return "showgoat.html";
+
+    }
+
 
     @RequestMapping(value = "/userpanel.html", method = RequestMethod.GET)
     public String userPanel() {
