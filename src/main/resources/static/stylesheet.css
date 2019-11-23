@@ -4,8 +4,8 @@
 body {
     font-family: 'Roboto', sans-serif;
     font-size: 12px;
-    margin: 0 15px;
     background-image: linear-gradient(to right, #FFA600, #FFC500);
+    margin: 0;
 }
 
 #userGoatID {
@@ -216,7 +216,7 @@ li.dropdown {
 }
 
 .login-main {
-    margin-top: 150px;
+    margin-top: 60px;
     text-align: center;
 }
 
