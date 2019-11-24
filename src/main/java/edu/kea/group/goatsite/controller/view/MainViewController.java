@@ -155,7 +155,7 @@ public class MainViewController {
         newGoat.setLongDescription(goat.getLongDescription());
         newGoat.setGender(goat.getGender());
         goatRepository.save(newGoat);
-        return "index.html";
+        return "redirect:/";
     }
 
 
