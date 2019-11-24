@@ -31,10 +31,11 @@
     <li/>
 </ul>
 
-<h1>Shows the goat</h1>
+<h1 style="padding-bottom: 50px; padding-top: 30px">Additional information about your match:</h1>
 
 
 
+<!--
 <table class="table-specific-goat-panel">
     <thead>
     <tr>
@@ -59,6 +60,12 @@
     </tr>
     </tbody>
 </table>
+-->
+
+<div>Name: <p th:text="${getGoat.username}"></p></div>
+<div style="padding-top: 20px">Gender: <p th:text="${getGoat.gender}"></p></div>
+<div style="padding-top: 20px">Short Description: <p th:text="${getGoat.shortDescription}"></p></div>
+<div style="padding-top: 20px">Long Description: <p th:text="${getGoat.longDescription}"></p></div>
 
 </body>
 </html>
