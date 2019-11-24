@@ -41,11 +41,12 @@
     <td><input type="text" name="name" placeholder="Name" th:value="${goat.name}"></td>
     <td><input type="text" name="shortDescription" placeholder="Short Description" th:value="${goat.shortDescription}"></td>
     <td><textarea rows="6" cols="70" type="text" name="longDescription" th:text="${goat.longDescription}"></textarea></td>
-    <td><select name="gender">
-        <option value="MALE">Male</option>
-        <option value="FEMALE">Female</option>
-        <option value="NONE">None</option>
-    </select>
+    <td>
+        <select name="gender" th:field="${goat.gender}">
+            <option value="MALE">Male</option>
+            <option value="FEMALE">Female</option>
+            <option value="OTHER">Other</option>
+        </select>
     </td>
     <input type="submit" value="Add information"/>
 </form>
