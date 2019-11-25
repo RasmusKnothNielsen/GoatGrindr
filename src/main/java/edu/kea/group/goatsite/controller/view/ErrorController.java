@@ -22,12 +22,14 @@ public class ErrorController implements org.springframework.boot.web.servlet.err
             if(statusCode == HttpStatus.NOT_FOUND.value()) {
                 return "error-404";
             }
+            /*
             else if(statusCode == HttpStatus.BAD_REQUEST.value()) {
                 return "error-501";
             }
             else if(statusCode == HttpStatus.METHOD_NOT_ALLOWED.value()) {
                 return "error-405";
             }
+            */
         }
         return "error";
     }

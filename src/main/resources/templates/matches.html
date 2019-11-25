@@ -37,13 +37,12 @@
     <table class="table-matches">
         <thead>
         <tr>
-            <th>Goat1</th>
-            <th>Goat2</th>
+            <th>Goat</th>
+            <th>Show goat</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="match : ${getMatches}">
-            <td th:text="${match.goat1Id.username}"></td>
             <td th:text="${match.goat2Id.username}"></td>
             <td id="td-show-goat">
                 <form th:action="@{'/showgoat/' + ${match.goat2Id.username}}" method="get">
