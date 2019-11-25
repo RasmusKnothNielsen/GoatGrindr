@@ -17,7 +17,7 @@ public class MatchService {
     MatchRepository matchRepository;
 
     Iterable<Match> findMatchByGoat1IdOrGoat2Id(Goat goat) {
-        Iterable<Match> foundMatches = matchRepository.findMatchByGoat1Id(goat);
+        Iterable<Match> foundMatches = matchRepository.findMatchByGoat1(goat);
         return foundMatches;
     }
 

@@ -8,14 +8,13 @@
 </head>
 <body>
 
-<ul style="width: 105%; margin-left: -15px">
+<ul>
     <li><a href="/">Home</a></li>
-    <li style="float:right; margin-right: 2.6%" class="dropdown">
+    <li style="float:right" class="dropdown">
         <a style="alignment: left" href="javascript:void(0)" class="dropbtn">More</a>
         <div class="dropdown-content">
             <a href="matches.html">Matches</a>
             <a href="profile.html">Profile</a>
-            <a href="settings.html">Settings</a>
 
             <div sec:authorize="hasRole('ROLE_ADMIN')">
                 <form th:action="@{/adminpanel}" method="get">
@@ -32,35 +31,6 @@
 </ul>
 
 <h1 style="padding-bottom: 50px; padding-top: 30px">Additional information about your match:</h1>
-
-
-
-<!--
-<table class="table-specific-goat-panel">
-    <thead>
-    <tr>
-        <th class="specific-goat-id">Id</th>
-        <th>Username</th>
-        <th>Name</th>
-        <th>Gender</th>
-        <th>Date of Birth</th>
-        <th>Short description</th>
-        <th>Long description</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="goat : ${getGoat}">
-        <td class="admin-panel-goat-id" th:text="${goat.id}"></td>
-        <td th:text="${goat.username}"></td>
-        <td th:text="${goat.name}"></td>
-        <td th:text="${goat.gender}"></td>
-        <td th:text="${goat.dob}"></td>
-        <td th:text="${goat.shortDescription}"></td>
-        <td th:text="${goat.longDescription}"></td>
-    </tr>
-    </tbody>
-</table>
--->
 
 <div>Name: <p th:text="${getGoat.username}"></p></div>
 <div style="padding-top: 20px">Gender: <p th:text="${getGoat.gender}"></p></div>

@@ -91,7 +91,7 @@ public class MainViewController {
     @RequestMapping(value = "/matches.html", method = RequestMethod.GET)
     public String matches(Model model, @AuthenticationPrincipal org.springframework.security.core.userdetails.User user) {
         Goat goat = goatRepository.findByUsername(user.getUsername());
-        Iterable<Match> getAllMatches = matchRepository.findMatchByGoat1Id(goat);
+        Iterable<Match> getAllMatches = matchRepository.findMatchByGoat1(goat);
         model.addAttribute("getMatches", getAllMatches);
         return "matches.html";
     }

@@ -36,7 +36,6 @@
 <h1>Change profile information</h1>
 
 <form th:action="@{/changeinformation}" method="post">
-    <input type="submit" value="Add information"/>
     <input class="inputfield" type="hidden" name="dob" th:value="${goat.dob}">
     <input class="inputfield" type="text" name="username" placeholder="Username" th:value="${goat.username}"><br>
     <input class="inputfield" type="password" name="password" placeholder="Password"><br>
