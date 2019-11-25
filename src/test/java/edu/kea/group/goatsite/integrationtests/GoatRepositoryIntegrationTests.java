@@ -82,41 +82,8 @@ public class GoatRepositoryIntegrationTests {
 
         // Then we se the following
         assertThat(formerLongDescription)
-                .isNotEqualTo(goatRepository.findByUsername("Ferdinandos"));
+                .isNotEqualTo(goatRepository.findByUsername("Ferdinandos").getLongDescription());
 
-
-        /*
-        // Prepare goat whose info we want to change
-
-        // Create a goat
-        Goat goat = new Goat();
-        goat.setName("Ferdinand");
-        goat.setUsername("Ferdinand");
-        goat.setDob(new Date(2000));
-        goat.setEnabled(true);
-        goat.setGender(Gender.MALE);
-        goat.setLongDescription("Be Baaaaahd like me!");
-
-        // Add goat to persistent storage
-        goatRepository.save(goat);
-
-        // Save the long description as a string
-        String formerLongDescription = goat.getLongDescription();
-
-
-
-        // Start to change information and save new entity to DB
-        goat = goatRepository.findByUsername("Ferdinand");
-        goat.setLongDescription("Wanna be baaaaahd with me?!");
-        goatRepository.save(goat);
-
-
-
-        // Assert if the information has been changed
-        assertThat(formerLongDescription)
-                .isNotEqualTo(goatRepository.findByUsername("Ferdinand").getLongDescription());
-
-         */
     }
 
 }
