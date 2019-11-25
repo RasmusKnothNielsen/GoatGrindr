@@ -6,11 +6,14 @@
     <title>Profile</title>
     <link rel="stylesheet" href="/stylesheet.css">
 </head>
+
+<!--/*@thymesVar id="goat" type="edu.kea.group.goatsite.model.Goat"*/-->
+
 <body>
 
-<ul style="width: 105%; margin-left: -15px">
+<ul>
     <li><a href="/">Home</a></li>
-    <li style="float:right; margin-right: 2.6%" class="dropdown">
+    <li style="float:right" class="dropdown">
         <a style="alignment: left" href="javascript:void(0)" class="dropbtn">More</a>
         <div class="dropdown-content">
             <a href="matches.html">Matches</a>
@@ -27,26 +30,25 @@
                 </form>
             </div>
         </div>
-    <li/>
+    </li>
 </ul>
 
-<h1>Information about the goat!</h1>
+<h1>Change profile information</h1>
 
-<p>Change information</p>
 <form th:action="@{/changeinformation}" method="post">
-    <td style="display:none;"><input type="hidden" name="dob" th:value="${goat.dob}"></td>
-    <td><input type="text" name="username" placeholder="Username" th:value="${goat.username}"></td>
-    <td><input type="password" name="password" placeholder="Password"></td>
-    <td><input type="text" name="name" placeholder="Name" th:value="${goat.name}"></td>
-    <td><input type="text" name="shortDescription" placeholder="Short Description" th:value="${goat.shortDescription}"></td>
-    <td><textarea rows="6" cols="70" type="text" name="longDescription" th:text="${goat.longDescription}"></textarea></td>
-    <td><select name="gender">
+    <input class="inputfield" type="hidden" name="dob" th:value="${goat.dob}">
+    <input class="inputfield" type="text" name="username" placeholder="Username" th:value="${goat.username}"><br>
+    <input class="inputfield" type="password" name="password" placeholder="Password"><br>
+    <input class="inputfield" type="text" name="name" placeholder="Name" th:value="${goat.name}"><br>
+    <select name="gender">
         <option value="MALE">Male</option>
         <option value="FEMALE">Female</option>
         <option value="NONE">None</option>
-    </select>
-    </td>
-    <input type="submit" value="Add information"/>
+    </select><br>
+    <input class="inputfield" type="text" name="shortDescription" placeholder="Short Description" th:value="${goat.shortDescription}"><br>
+    <textarea class ="inputarea" rows="6" cols="40" type="text" name="longDescription" th:text="${goat.longDescription}"></textarea><br>
+
+    <input class="btn btn-add-user-form" type="submit" value="Set Information"/>
 </form>
 
 </body>

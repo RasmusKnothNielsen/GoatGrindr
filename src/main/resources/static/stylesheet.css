@@ -242,6 +242,12 @@ li.dropdown {
     margin-top: 1.5em;
 }
 
+.inputarea {
+    border-radius: 10px;
+    font-size: 18px;
+    margin-top: 1.5em;
+}
+
 #username {
     margin-top: 0;
 }
