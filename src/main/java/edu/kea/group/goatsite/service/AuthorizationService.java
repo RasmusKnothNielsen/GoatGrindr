@@ -19,7 +19,7 @@ public class AuthorizationService {
     // change the role of a goat with ROLE_USER to also have the ROLE_ADMIN
     public void changeRole(Long id) {
         Authorization authorization = new Authorization();
-        authorization.setGoatid(id);
+        authorization.setGoatId(id);
         authorization.setRole(Role.ROLE_ADMIN);
         authorizationRepository.save(authorization);
     }

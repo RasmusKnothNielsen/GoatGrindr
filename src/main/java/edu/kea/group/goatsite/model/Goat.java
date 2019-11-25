@@ -1,5 +1,6 @@
 package edu.kea.group.goatsite.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -42,12 +43,15 @@ public class Goat {
     @NotNull
     private boolean enabled;
 
-    @OneToMany(mappedBy = "goatid", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "goatId", fetch = FetchType.LAZY)
     private List<Authorization> authorizations;
 
-    @OneToMany(mappedBy = "goatLiker", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "goatLiker", fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<Like> likes;
 
-    @OneToMany(mappedBy = "goatDisliker", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "goatDisliker", fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<Dislike> dislikes;
+
 }

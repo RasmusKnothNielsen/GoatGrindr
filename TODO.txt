@@ -18,9 +18,9 @@ Optional:
     - Test if matches works
 
 
-
+(DONE) Vis Matches på match side. (Rasmus)
 Design af oprettelsessiden.
-Sikre sig at man ikke kan oprette en ged med -alder (Efter nuværnde dato) (Rasmus)
+(DONE) Sikre sig at man ikke kan oprette en ged med -alder (Efter nuværnde dato) (Rasmus)
 
 (DONE) Redirect til login side (Niki)
 (DONE) Fix knap (Rasmus)
@@ -46,8 +46,8 @@ Hente billeder ned og gemme dem lokalt, frem for at hente dem fra gedde api'et.
 (DONE) Tilføje 404 og 503 fejlkoder. (Rasmus)
 
 Mocktests af app.
-Hvis man scroller til højre, er der en "bar" som skal fjernes.
-Sørge for at det valgte køn bliver vist næste gang man prøver at ændre gede informationer.
+(DONE) Hvis man scroller til højre, er der en "bar" som skal fjernes.
+(DONE) Sørge for at det valgte køn bliver vist næste gang man prøver at ændre gede informationer. (Rasmus)
 Safetyfeature for admin delete, Hvis der er én admin, skal man ikke kunne slette denne, før en ny ged er blevet admin.
 
 Bonus:

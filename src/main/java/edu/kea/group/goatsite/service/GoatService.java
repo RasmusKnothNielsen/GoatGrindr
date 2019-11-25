@@ -36,7 +36,7 @@ public class GoatService {
         Authorization authorization = new Authorization();
 
         // Set authorization goat_Id to equal the Goat objects id
-        authorization.setGoatid(goat.getId());
+        authorization.setGoatId(goat.getId());
         authorization.setRole(Role.ROLE_USER);
         authorizationService.add(authorization);
     }

@@ -1,24 +1,40 @@
 package edu.kea.group.goatsite.controller.view;
 
 import edu.kea.group.goatsite.model.Goat;
-import edu.kea.group.goatsite.repository.AuthorizationRepository;
-import edu.kea.group.goatsite.repository.GoatRepository;
+import edu.kea.group.goatsite.repository.*;
 import edu.kea.group.goatsite.service.AuthorizationService;
+import edu.kea.group.goatsite.model.Match;
+import edu.kea.group.goatsite.repository.GoatRepository;
+import edu.kea.group.goatsite.repository.MatchRepository;
 import edu.kea.group.goatsite.service.GoatService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.annotation.*;
 import java.security.Principal;
+import java.util.Optional;
 
 
 @Controller
 public class MainViewController {
 
     @Autowired
+    private AuthorizationRepository authorizationRepository;
+
+    @Autowired
+    private DislikeRepository dislikeRepository;
+
+    @Autowired
     private GoatRepository goatRepository;
+
+    @Autowired
+    private LikeRepository likeRepository;
+
+    @Autowired
+    private MatchRepository matchRepository;
 
     @Autowired
     private GoatService goatService;
@@ -73,7 +89,10 @@ public class MainViewController {
     }
 
     @RequestMapping(value = "/matches.html", method = RequestMethod.GET)
-    public String matches(@AuthenticationPrincipal org.springframework.security.core.userdetails.User user) {
+    public String matches(Model model, @AuthenticationPrincipal org.springframework.security.core.userdetails.User user) {
+        Goat goat = goatRepository.findByUsername(user.getUsername());
+        Iterable<Match> getAllMatches = matchRepository.findMatchByGoat1(goat);
+        model.addAttribute("getMatches", getAllMatches);
         return "matches.html";
     }
 
@@ -87,7 +106,7 @@ public class MainViewController {
                 return "adminpanel";
             }
             if (authority.getAuthority().equals("ROLE_USER")) {
-                return "Unauthorized access"; // TODO Lav en unauthorized acces page, som vi kan vise.
+                return "Unauthorized_access";
             }
         }
         return null;
@@ -100,6 +119,15 @@ public class MainViewController {
         model.addAttribute("getGoats", getAllGoats);
         return "listofgoats";
     }
+
+    @GetMapping("/showgoat/{username}")
+    public String showGoat(@PathVariable String username, Model model) {
+        Goat goat = goatRepository.findByUsername(username);
+        model.addAttribute("getGoat", goat);
+        return "showgoat.html";
+
+    }
+
 
     @RequestMapping(value = "/userpanel.html", method = RequestMethod.GET)
     public String userPanel() {
@@ -114,6 +142,10 @@ public class MainViewController {
 
     @PostMapping("/listofgoats/{id}")
     public String deleteGoatById(@PathVariable Long id) {
+        authorizationRepository.deleteAllByGoatId(id);
+        dislikeRepository.deleteAllByGoatId(id, id);
+        likeRepository.deleteAllByGoatId(id, id);
+        matchRepository.deleteAllByGoatId(id, id);
         goatRepository.deleteById(id);
         return "redirect:/listofgoats";
     }
@@ -127,7 +159,7 @@ public class MainViewController {
         newGoat.setLongDescription(goat.getLongDescription());
         newGoat.setGender(goat.getGender());
         goatRepository.save(newGoat);
-        return "index.html";
+        return "redirect:/";
     }
 
     // change the role of a user to admin

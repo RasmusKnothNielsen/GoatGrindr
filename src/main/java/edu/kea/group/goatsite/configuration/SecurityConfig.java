@@ -1,4 +1,4 @@
-package edu.kea.group.goatsite.Configuration;
+package edu.kea.group.goatsite.configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -24,8 +24,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.jdbcAuthentication().dataSource(dataSource)
                 .usersByUsernameQuery("SELECT username, password, enabled FROM goats where username =?")
                 // Query to get the authorization from the database
-                .authoritiesByUsernameQuery("SELECT goats.username AS username, authorization.role AS authority " +
-                        "FROM goats JOIN authorization on goats.id=authorization.goat_id WHERE goats.username = ?")
+                .authoritiesByUsernameQuery("SELECT goats.username AS username, authorizations.role AS authority " +
+                        "FROM goats JOIN authorizations on goats.id=authorizations.goat_id WHERE goats.username = ?")
                 .passwordEncoder(new BCryptPasswordEncoder());
     }
 
