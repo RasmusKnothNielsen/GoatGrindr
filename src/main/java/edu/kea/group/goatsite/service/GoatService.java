@@ -3,6 +3,8 @@ package edu.kea.group.goatsite.service;
 import edu.kea.group.goatsite.model.Authorization;
 import edu.kea.group.goatsite.model.Gender;
 import edu.kea.group.goatsite.model.Goat;
+import edu.kea.group.goatsite.model.Role;
+import edu.kea.group.goatsite.repository.AuthorizationRepository;
 import edu.kea.group.goatsite.repository.GoatRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -21,6 +23,7 @@ public class GoatService {
     @Autowired
     PasswordEncoder passwordEncoder;
 
+
     // Add a goat to the database and hash the password
     // also add the newly created goat in the authorization table
     public void addGoat(Goat goat) {
@@ -33,9 +36,10 @@ public class GoatService {
         Authorization authorization = new Authorization();
 
         // Set authorization goat_Id to equal the Goat objects id
-        authorization.setGoat_Id(goat.getId());
-        authorization.setRole("ROLE_USER");
+        authorization.setGoatId(goat.getId());
+        authorization.setRole(Role.ROLE_USER);
         authorizationService.add(authorization);
-
     }
+
+    // TODO: Add a method to change an admins role to user
 }

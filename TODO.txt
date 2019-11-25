@@ -39,7 +39,7 @@ Admin side
 Brug informationer tilhørende indlogget ged (Thomas)
 Skriv Spring Tests
 Skriv korrekt SQL query til at finde kandidatgeder
-Ved like - check for matches.
+(DONE) Ved like - check for matches.
 Hvordan håndterer vi matches?
 Lyde
 Hente billeder ned og gemme dem lokalt, frem for at hente dem fra gedde api'et.

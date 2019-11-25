@@ -1,24 +1,19 @@
 package edu.kea.group.goatsite.controller.view;
 
-import edu.kea.group.goatsite.model.Gender;
 import edu.kea.group.goatsite.model.Goat;
+import edu.kea.group.goatsite.repository.*;
+import edu.kea.group.goatsite.service.AuthorizationService;
 import edu.kea.group.goatsite.model.Match;
 import edu.kea.group.goatsite.repository.GoatRepository;
 import edu.kea.group.goatsite.repository.MatchRepository;
 import edu.kea.group.goatsite.service.GoatService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.annotation.*;
-
-import javax.servlet.RequestDispatcher;
-import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
 import java.util.Optional;
 
@@ -27,13 +22,25 @@ import java.util.Optional;
 public class MainViewController {
 
     @Autowired
+    private AuthorizationRepository authorizationRepository;
+
+    @Autowired
+    private DislikeRepository dislikeRepository;
+
+    @Autowired
     private GoatRepository goatRepository;
+
+    @Autowired
+    private LikeRepository likeRepository;
+
+    @Autowired
+    private MatchRepository matchRepository;
 
     @Autowired
     private GoatService goatService;
 
     @Autowired
-    private MatchRepository matchRepository;
+    private AuthorizationService authorizationService;
 
 
     @RequestMapping("/js/MainPage.js")
@@ -46,13 +53,6 @@ public class MainViewController {
         model.addAttribute("candidates", candidates);
         return "../static/js/MainPage.js";
     }
-
-    @GetMapping(value = "/settings.html")
-    public String goToSettings() {
-        return "settings.html";
-    }
-
-
 
     // Get the index file if the user is logged in, else get the login file
     @RequestMapping(value = "/", method = RequestMethod.GET)
@@ -115,7 +115,7 @@ public class MainViewController {
     // Getmapping to get a list of all goats in the admin panel
     @GetMapping("/listofgoats")
     public String getListOfGoats(Model model) {
-        Iterable<Goat> getAllGoats = goatRepository.findAll();
+        Iterable<Goat> getAllGoats = goatRepository.findAllByRoleAndId();
         model.addAttribute("getGoats", getAllGoats);
         return "listofgoats";
     }
@@ -142,6 +142,10 @@ public class MainViewController {
 
     @PostMapping("/listofgoats/{id}")
     public String deleteGoatById(@PathVariable Long id) {
+        authorizationRepository.deleteAllByGoatId(id);
+        dislikeRepository.deleteAllByGoatId(id, id);
+        likeRepository.deleteAllByGoatId(id, id);
+        matchRepository.deleteAllByGoatId(id, id);
         goatRepository.deleteById(id);
         return "redirect:/listofgoats";
     }
@@ -158,5 +162,11 @@ public class MainViewController {
         return "redirect:/";
     }
 
+    // change the role of a user to admin
+    @PostMapping("/changerole/{id}")
+    public String changeRole(@PathVariable Long id) {
+        authorizationService.changeRole(id);
+        return "redirect:/listofgoats";
+    }
 
 } // closing bracket for class

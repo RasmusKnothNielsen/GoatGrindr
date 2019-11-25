@@ -29,21 +29,14 @@ public class LikeApiController {
         Long liker = like.getGoatLiker().getId();
         Long liked = like.getGoatLiked().getId();
         Iterable<Like> matches = likeRepository.findMatch(liker,liked);
-
         if(matches.iterator().hasNext()) {
-
-            //System.out.println("Match found!");
             Match match = new Match();
-            match.setGoat1Id(like.getGoatLiked());
-            match.setGoat2Id(like.getGoatLiker());
+            match.setGoat1(like.getGoatLiked());
+            match.setGoat2(like.getGoatLiker());
             matchRepository.save(match);
             return true;
-
         } else {
-
-            //System.out.println("No match.");
             return false;
-
         }
     }
 

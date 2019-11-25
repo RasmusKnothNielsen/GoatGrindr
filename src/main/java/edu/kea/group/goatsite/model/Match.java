@@ -15,11 +15,11 @@ public class Match {
     private Long id;
 
     @NotNull
-    @ManyToOne
-    private Goat goat1Id;
+    @ManyToOne(cascade = CascadeType.MERGE)
+    private Goat goat1;
 
     @NotNull
-    @ManyToOne
-    private Goat goat2Id;
+    @ManyToOne(cascade = CascadeType.MERGE)
+    private Goat goat2;
 
 }
