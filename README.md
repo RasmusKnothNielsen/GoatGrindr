@@ -1,5 +1,16 @@
 # GoatGrindr
 
+Dating app for serious goats
+
+A Tinder/Grindr like app that offers 
+- A carousel mode
+- Swipe to like/dislike
+- Match with new goats if both likes each other
+- Admin Panel to delete goats and make goats admins
+- Spring security to ensure integrity
+- Bcrypt to hash passwords before they are being stored in the MySQL database
+
+
 This web application was developed as an mandatory assignment on 3. semester of the AP in computer science from KEA, Denmark.
 
 To run the application, an application.properties file is needed in the following folder:
