@@ -14,8 +14,8 @@ Optional:
 (DONE) - Spring security (Rasmus)
 - Spring Test
 (DONE)    - Test if update goat works (Rasmus)
-    - Test if like / dislike works
-    - Test if matches works
+(DONE)    - Test if like / dislike works
+(DONE)    - Test if matches works
 
 
 (DONE) Vis Matches på match side. (Rasmus)
@@ -36,7 +36,7 @@ Design af oprettelsessiden.
 
 (DONE) Admin side
 (DONE) Opret ny ged fra Login Side (Niki)
-Brug informationer tilhørende indlogget ged (Thomas)
+(DONE) Brug informationer tilhørende indlogget ged (Thomas)
 (DONE) Skriv Spring Tests
 (DONE) Ved like - check for matches.
 (DONE) Tilføje 404 og 503 fejlkoder. (Rasmus)
