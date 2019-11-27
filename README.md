@@ -1,0 +1,46 @@
+# GoatGrindr
+
+This web application was developed as an mandatory assignment on 3. semester of the AP in computer science from KEA, Denmark.
+
+To run the application, an application.properties file is needed in the following folder:
+```
+src -> main -> resources
+```
+
+With the following text:
+
+```
+spring.jpa.hibernate.ddl-auto=update
+spring.datasource.url=jdbc:mysql://localhost:3306/goats?serverTimezone=UTC
+spring.datasource.username=
+spring.datasource.password=
+spring.main.allow-bean-definition-overriding=true
+spring.profiles.active=dev
+```
+Remember to fill in the username and password of the MySQL database.
+
+Test data for the database is provided in the following folder:
+```
+src -> main -> resources -> database
+```
+
+Choose database_mini.dml to initialise the database with minimal data.
+
+The admin login is:
+```
+Username: Ferdinand
+Password: Hunter2
+```
+
+Most of the users passwords are:
+```
+Hunter2
+```
+
+
+Developers involved:
+- Niki Ryom Hansen
+- Thomas Dahl
+- Rasmus Knoth Nielsen
+
+Have fun!
