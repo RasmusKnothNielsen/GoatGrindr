@@ -34,23 +34,25 @@ Design af oprettelsessiden.
 (DONE)	    	    CSS til knappen
 
 
-Admin side
+(DONE) Admin side
 (DONE) Opret ny ged fra Login Side (Niki)
 Brug informationer tilhørende indlogget ged (Thomas)
-Skriv Spring Tests
-Skriv korrekt SQL query til at finde kandidatgeder
+(DONE) Skriv Spring Tests
 (DONE) Ved like - check for matches.
-Hvordan håndterer vi matches?
-Lyde
-Hente billeder ned og gemme dem lokalt, frem for at hente dem fra gedde api'et.
 (DONE) Tilføje 404 og 503 fejlkoder. (Rasmus)
 
-Mocktests af app.
 (DONE) Hvis man scroller til højre, er der en "bar" som skal fjernes.
 (DONE) Sørge for at det valgte køn bliver vist næste gang man prøver at ændre gede informationer. (Rasmus)
-Safetyfeature for admin delete, Hvis der er én admin, skal man ikke kunne slette denne, før en ny ged er blevet admin.
 
 Bonus:
+Hente billeder ned og gemme dem lokalt, frem for at hente dem fra gedde api'et.
+Lyde
+Mocktests af app.
 Notifikationer for nye matches?
 Sorter efter køn, alder
 Bekræftelsesbesked for at slette en bruger
+Safetyfeature for admin delete, Hvis der er én admin, skal man ikke kunne slette denne, før en ny ged er blevet admin.
+Fjerne Admin igen uden at slette bruger
+Design af Matches side
+Chat funktionalitet
+
