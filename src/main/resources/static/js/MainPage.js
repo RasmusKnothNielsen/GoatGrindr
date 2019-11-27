@@ -158,8 +158,10 @@ class MainPage {
             this.topCard.style.transform = 'translateX(-50%) translateY(-50%) rotate(0deg) rotateY(180deg) scale(1)';
             this.isFlipped = true;
 
-            // TODO - play mating sound here
-            // How do we handle sounds?
+            // play mating sound here
+            var audio = new Audio('../sound/goat' + Math.floor(Math.random() * 14) + '.mp3');
+            audio.play();
+
 
 
         } else {

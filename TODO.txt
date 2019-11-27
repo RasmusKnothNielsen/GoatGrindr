@@ -43,10 +43,11 @@ Design af oprettelsessiden.
 
 (DONE) Hvis man scroller til højre, er der en "bar" som skal fjernes.
 (DONE) Sørge for at det valgte køn bliver vist næste gang man prøver at ændre gede informationer. (Rasmus)
+(DONE) Lyde når et kort vendes (Rasmus)
+
 
 Bonus:
 Hente billeder ned og gemme dem lokalt, frem for at hente dem fra gedde api'et.
-Lyde
 Mocktests af app.
 Notifikationer for nye matches?
 Sorter efter køn, alder
