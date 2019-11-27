@@ -1,11 +1,9 @@
 <!DOCTYPE html>
-<html lang="en"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
     <meta th:name="_csrf" th:content="${_csrf.token}"/>
-    <title>GoatGrindr</title>
+    <title>Matches</title>
     <link rel="stylesheet" href="/stylesheet.css">
 </head>
 <body>
@@ -31,16 +29,34 @@
         </div>
     <li/>
 </ul>
-    <img id="logo" src="/images/logo.png" alt="logo"/>
 
-    <div class="global-actions">
-        <div class="left-action"><img src="/images/dislike.png" alt="dislike" width="40" height="40"/></div>
-        <div class="right-action"><img src="/images/like.png" alt="like" width="40" height="40"/></div>
-    </div>
+<h1>This page shows matches!</h1>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script type="text/javascript" th:src="@{/js/MainPage.js}"></script>
-    <span id="userGoatID" sec:authentication="name"></span>
+<section class="matches">
+    <table class="table-matches">
+        <thead>
+        <tr>
+            <th>Goat</th>
+            <th>Show goat</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="match : ${getMatches}">
+            <td th:text="${match.goat2.username}"></td>
+            <td id="td-show-goat">
+                <form th:action="@{'/showgoat/' + ${match.goat2.username}}" method="get">
+                    <input class="btn btn-show-goat" type="submit" value="Show profile"/>
+                </form>
+            </td>
+            <td id="td-delete">
+                <form th:action="@{'/chat'}" method="get">
+                    <input class="btn btn-delete-goat" type="submit" value="Chat"/>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</section>
+
 </body>
 </html>

@@ -1,20 +1,56 @@
-Redirect til login side
-Fix knap (Rasmus)
-	Menu med: (Rasmus)
-		Matches
-		Profile
-		Settings
-		Admin (kun synlig hvis admin login)
+REQUIRED:
+- (DONE) Update your own Goat profile (Rasmus)
+- (DONE) Swipe goats (Thomas)
+- (DONE) Save to the DB which goats you like/dislike (Thomas)
+- (DONE) When you save a "like" to the DB check if it’s a match and create a row if it is (Thomas)
+
+(DONE) Rette DML script til, så den passer til de nye kolonner i goats og authorization (Niki)
+
+Optional:
+(DONE)- Carousel (Thomas)
+- Admin Panel (Niki)
+(DONE)    - Delete goat
+        - Change role of Goat, ROLE_USER to ROLE_ADMIN
+(DONE) - Spring security (Rasmus)
+- Spring Test
+(DONE)    - Test if update goat works (Rasmus)
+    - Test if like / dislike works
+    - Test if matches works
+
+
+(DONE) Vis Matches på match side. (Rasmus)
+Design af oprettelsessiden.
+(DONE) Sikre sig at man ikke kan oprette en ged med -alder (Efter nuværnde dato) (Rasmus)
+
+(DONE) Redirect til login side (Niki)
+(DONE) Fix knap (Rasmus)
+(DONE)	Menu med: (Rasmus) (DONE)
+(DONE)		Matches (Rasmus) (DONE)
+(DONE)		Profile (Rasmus) (DONE)
+(DONE)		Settings (Rasmus) (DONE)
+
+(DONE)		Admin (kun synlig hvis admin login) (Rasmus) (DONE)
+(DONE)		Logout
+(DONE)	    	    CSS til knappen
+
+
 Admin side
-Opret ny ged fra Login Side
-Brug informationer tilhørende indlogget ged
+(DONE) Opret ny ged fra Login Side (Niki)
+Brug informationer tilhørende indlogget ged (Thomas)
 Skriv Spring Tests
 Skriv korrekt SQL query til at finde kandidatgeder
-Ved like - check for matches.
+(DONE) Ved like - check for matches.
 Hvordan håndterer vi matches?
 Lyde
 Hente billeder ned og gemme dem lokalt, frem for at hente dem fra gedde api'et.
+(DONE) Tilføje 404 og 503 fejlkoder. (Rasmus)
+
+Mocktests af app.
+(DONE) Hvis man scroller til højre, er der en "bar" som skal fjernes.
+(DONE) Sørge for at det valgte køn bliver vist næste gang man prøver at ændre gede informationer. (Rasmus)
+Safetyfeature for admin delete, Hvis der er én admin, skal man ikke kunne slette denne, før en ny ged er blevet admin.
 
 Bonus:
 Notifikationer for nye matches?
 Sorter efter køn, alder
+Bekræftelsesbesked for at slette en bruger

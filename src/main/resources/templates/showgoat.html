@@ -1,11 +1,9 @@
 <!DOCTYPE html>
-<html lang="en"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
     <meta th:name="_csrf" th:content="${_csrf.token}"/>
-    <title>GoatGrindr</title>
+    <title>Show Specific Goat</title>
     <link rel="stylesheet" href="/stylesheet.css">
 </head>
 <body>
@@ -31,16 +29,13 @@
         </div>
     <li/>
 </ul>
-    <img id="logo" src="/images/logo.png" alt="logo"/>
 
-    <div class="global-actions">
-        <div class="left-action"><img src="/images/dislike.png" alt="dislike" width="40" height="40"/></div>
-        <div class="right-action"><img src="/images/like.png" alt="like" width="40" height="40"/></div>
-    </div>
+<h1 style="padding-bottom: 50px; padding-top: 30px">Additional information about your match:</h1>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script type="text/javascript" th:src="@{/js/MainPage.js}"></script>
-    <span id="userGoatID" sec:authentication="name"></span>
+<div>Name: <p th:text="${getGoat.username}"></p></div>
+<div style="padding-top: 20px">Gender: <p th:text="${getGoat.gender}"></p></div>
+<div style="padding-top: 20px">Short Description: <p th:text="${getGoat.shortDescription}"></p></div>
+<div style="padding-top: 20px">Long Description: <p th:text="${getGoat.longDescription}"></p></div>
+
 </body>
 </html>

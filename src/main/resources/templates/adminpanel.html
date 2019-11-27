@@ -1,11 +1,9 @@
 <!DOCTYPE html>
-<html lang="en"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
     <meta th:name="_csrf" th:content="${_csrf.token}"/>
-    <title>GoatGrindr</title>
+    <title>Admin Panel</title>
     <link rel="stylesheet" href="/stylesheet.css">
 </head>
 <body>
@@ -31,16 +29,11 @@
         </div>
     <li/>
 </ul>
-    <img id="logo" src="/images/logo.png" alt="logo"/>
+<h1>Welcome to ADMIN PANEL</h1>
 
-    <div class="global-actions">
-        <div class="left-action"><img src="/images/dislike.png" alt="dislike" width="40" height="40"/></div>
-        <div class="right-action"><img src="/images/like.png" alt="like" width="40" height="40"/></div>
-    </div>
+    <form th:action="@{/listofgoats}" method="get">
+        <input class="btn btn-list-of-goats" type="submit" value="List of goats"/>
+    </form>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script type="text/javascript" th:src="@{/js/MainPage.js}"></script>
-    <span id="userGoatID" sec:authentication="name"></span>
 </body>
 </html>

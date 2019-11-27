@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Goat</title>
+    <link rel="stylesheet" href="stylesheet.css"/>
+</head>
+<body>
+<main class="add-user-main">
+    <form name="form-login" th:action="@{'/adduser'}" method="post">
+        <input type="hidden" value="1" name="enabled"/>
+
+        <input class="inputfield" type="text" name="name"
+               placeholder="Full name" required/>
+        <br>
+        <input class="inputfield" type="text" name="username"
+               placeholder="Desired username" required/>
+        <br>
+        <input class="inputfield" type="password" name="password"
+               placeholder="Password" required/>
+        <br>
+        <!--TODO: Change type to date or consider how to handle anything that isn't a date -->
+        <input class="inputfield" type="date" name="dob"
+               placeholder="YYYY-MM-DD" required/>
+        <br>
+        <input class="inputfield" style="text-transform: uppercase" type="text" name="gender"
+               placeholder="Male/Female/None"/>
+        <br>
+        <input class="inputfield" type="text" name="shortDescription"
+               placeholder="Short description about your goatness"/>
+        <br>
+        <textarea rows="15" cols="50" class="textarea inputfield" name="longDescription"
+                  placeholder="Long description about your goatness"></textarea>
+        <br>
+        <button class="btn btn-add-user-form" type="submit">Create account</button>
+    </form>
+</main>
+</body>
+</html>

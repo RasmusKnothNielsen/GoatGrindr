@@ -1,12 +1,55 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta th:name="_csrf" th:content="${_csrf.token}"/>
     <title>Profile</title>
-    <link rel="stylesheet" href="/static/stylesheet.css">
+    <link rel="stylesheet" href="/stylesheet.css">
 </head>
+
+<!--/*@thymesVar id="goat" type="edu.kea.group.goatsite.model.Goat"*/-->
+
 <body>
 
-<h1>Information about the goat!</h1>
+<ul>
+    <li><a href="/">Home</a></li>
+    <li style="float:right" class="dropdown">
+        <a style="alignment: left" href="javascript:void(0)" class="dropbtn">More</a>
+        <div class="dropdown-content">
+            <a href="matches.html">Matches</a>
+            <a href="profile.html">Profile</a>
+
+            <div sec:authorize="hasRole('ROLE_ADMIN')">
+                <form th:action="@{/adminpanel}" method="get">
+                    <input class="nav btn-admin-panel" type="submit" value="Admin panel"/>
+                </form>
+            </div>
+            <div>
+                <form name="form-logout" th:action="@{/logout}" method="post">
+                    <button class="nav btn-logout" type="submit">Logout</button>
+                </form>
+            </div>
+        </div>
+    </li>
+</ul>
+
+<h1>Change profile information</h1>
+
+<form th:action="@{/changeinformation}" method="post">
+    <input class="inputfield" type="hidden" name="dob" th:value="${goat.dob}">
+    <input class="inputfield" type="text" name="username" placeholder="Username" th:value="${goat.username}"><br>
+    <input class="inputfield" type="password" name="password" placeholder="Password"><br>
+    <input class="inputfield" type="text" name="name" placeholder="Name" th:value="${goat.name}"><br>
+    <select name="gender" th:field="${goat.gender}">
+        <option value="MALE">Male</option>
+        <option value="FEMALE">Female</option>
+        <option value="NONE">None</option>
+    </select><br>
+    <input class="inputfield" type="text" name="shortDescription" placeholder="Short Description" th:value="${goat.shortDescription}"><br>
+    <textarea class ="inputarea" rows="6" cols="40" type="text" name="longDescription" th:text="${goat.longDescription}"></textarea><br>
+
+    <input class="btn btn-add-user-form" type="submit" value="Set Information"/>
+</form>
+
 </body>
 </html>

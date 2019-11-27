@@ -1,15 +1,15 @@
 package edu.kea.group.goatsite.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 import org.hibernate.validator.constraints.Length;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @Entity
@@ -18,14 +18,14 @@ public class Goat {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @OnDelete(action = OnDeleteAction.CASCADE) //TODO - Virker dette?
     private Long id;
 
     private String name;
 
     @NotNull
     @Past
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    //TODO: Add exceptionhandling if user writes a date that is after the current date or if user is above 150 years?
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE, pattern = "yyyy-MM-dd")
     private Date dob;
 
     @Enumerated(EnumType.STRING)
@@ -37,15 +37,21 @@ public class Goat {
     @Length(max = 10000)
     private String longDescription;
 
-    @Email(message = "Email should be valid")
     private String username;
     private String password;
-
-    @Enumerated(EnumType.STRING)
-    private Role role;
 
     @NotNull
     private boolean enabled;
 
+    @OneToMany(mappedBy = "goatId", fetch = FetchType.LAZY)
+    private List<Authorization> authorizations;
+
+    @OneToMany(mappedBy = "goatLiker", fetch = FetchType.LAZY)
+    @JsonIgnore
+    private List<Like> likes;
+
+    @OneToMany(mappedBy = "goatDisliker", fetch = FetchType.LAZY)
+    @JsonIgnore
+    private List<Dislike> dislikes;
 
 }

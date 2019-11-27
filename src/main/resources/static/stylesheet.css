@@ -4,11 +4,13 @@
 body {
     font-family: 'Roboto', sans-serif;
     font-size: 12px;
-    margin: 0 15px;
     background-image: linear-gradient(to right, #FFA600, #FFC500);
+    margin: 0;
 }
 
-
+#userGoatID {
+    display: none;
+}
 
 #logo {
     display: block;
@@ -185,3 +187,125 @@ li.dropdown {
 .dropdown:hover .dropdown-content {
     display: block;
 }
+
+.btn {
+    background-color: grey;
+    border: none;
+    color: black;
+    padding: 10px 35px 10px 35px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 10px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.btn-add-user {
+    background-color: transparent;
+    text-decoration: underline;
+    padding: 2px;
+}
+
+.btn-add-user:hover {
+    color: purple;
+}
+
+.btn-login:hover {
+    box-shadow: 2px 2px 2px black;
+}
+
+.login-main {
+    margin-top: 60px;
+    text-align: center;
+}
+
+.nav {
+    background-color: transparent;
+    padding: 10px;
+    border: none;
+    margin-left: 2.6%;
+    width: 95%;
+    text-align: left;
+    cursor: pointer;
+}
+
+.nav:hover {
+    background-color: #f1f1f1;
+}
+
+.inputfield {
+    height: 40px;
+    text-align: center;
+    border-radius: 10px;
+    font-size: 18px;
+    margin-top: 1.5em;
+}
+
+.inputarea {
+    border-radius: 10px;
+    font-size: 18px;
+    margin-top: 1.5em;
+}
+
+#username {
+    margin-top: 0;
+}
+tbody {
+    border-left: solid;
+    border-width: thin;
+    border-color: #6D95B0;
+}
+
+td {
+    border-bottom: solid;
+    border-width: thin;
+    border-color: #6D95B0;
+}
+
+tr {
+    height: 3em;
+    width: 50px;
+    max-width: 50px;
+}
+
+tr:hover {
+    background-color: chocolate;
+}
+
+th {
+    text-align: left;
+    width: 100px;
+    max-width: 50px;
+    border-bottom: solid;
+    border-width: thin;
+    border-color: #6D95B0;
+}
+
+.table-users-admin-panel {
+    border-collapse: collapse;
+}
+
+#td-options {
+    border: solid thin #6D95B0;
+    text-align: center;
+    vertical-align: middle;
+}
+#th-options {
+    text-align: center;
+}
+
+.admin-panel-goat-id {
+    width: 30px;
+}
+
+.btn-delete-goat {
+    margin: 2px;
+    width: 75%;
+}
+
+.btn-change-role-to-admin {
+    margin: 2px;
+    width: 75%;
+}
+

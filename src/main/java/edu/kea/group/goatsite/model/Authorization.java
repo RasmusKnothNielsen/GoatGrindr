@@ -1,26 +1,21 @@
 package edu.kea.group.goatsite.model;
 
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
-
+import lombok.Data;
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
-
+@Data
 @Entity
-@Table(name = "authorization")
-public class Authorization {
+@Table(name = "authorizations")
+public class Authorization implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @OnDelete(action = OnDeleteAction.CASCADE) //TODO - Virker dette?
     private Long id;
 
-    @NotNull
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    private Goat goat;
-
-    @NotNull
     @Enumerated(EnumType.STRING)
     private Role role;
+
+    //TODO: Add @ManyToOne annotation if possible? And necessary.
+    private Long goatId;
 }
