@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta th:name="_csrf" th:content="${_csrf.token}"/>
+    <title>Show Specific Goat</title>
+    <link rel="stylesheet" href="/stylesheet.css">
+</head>
+<body>
+
+<ul>
+    <li><a href="/">Home</a></li>
+    <li style="float:right" class="dropdown">
+        <a style="alignment: left" href="javascript:void(0)" class="dropbtn">More</a>
+        <div class="dropdown-content">
+            <a href="matches.html">Matches</a>
+            <a href="profile.html">Profile</a>
+
+            <div sec:authorize="hasRole('ROLE_ADMIN')">
+                <form th:action="@{/adminpanel}" method="get">
+                    <input class="nav btn-admin-panel" type="submit" value="Admin panel"/>
+                </form>
+            </div>
+            <div>
+                <form name="form-logout" th:action="@{/logout}" method="post">
+                    <button class="nav btn-logout" type="submit">Logout</button>
+                </form>
+            </div>
+        </div>
+    <li/>
+</ul>
+
+<h1 style="padding-bottom: 50px; padding-top: 30px">Additional information about your match:</h1>
+
+<div>Name: <p th:text="${getGoat.username}"></p></div>
+<div style="padding-top: 20px">Gender: <p th:text="${getGoat.gender}"></p></div>
+<div style="padding-top: 20px">Short Description: <p th:text="${getGoat.shortDescription}"></p></div>
+<div style="padding-top: 20px">Long Description: <p th:text="${getGoat.longDescription}"></p></div>
+
+</body>
+</html>
