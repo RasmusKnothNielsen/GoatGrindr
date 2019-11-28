@@ -15,7 +15,7 @@
     <description>Dating app for serious goats</description>
 
     <properties>
-        <java.version>11</java.version>
+        <java.version>8</java.version>
     </properties>
 
     <dependencies>
