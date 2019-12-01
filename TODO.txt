@@ -50,10 +50,10 @@ Bonus:
 Hente billeder ned og gemme dem lokalt, frem for at hente dem fra gedde api'et.
 Mocktests af app.
 Notifikationer for nye matches?
-Sorter efter køn, alder
-Bekræftelsesbesked for at slette en bruger
+Sorter efter køn, alder.
+Bekræftelsesbesked for at slette en bruger.
 Safetyfeature for admin delete, Hvis der er én admin, skal man ikke kunne slette denne, før en ny ged er blevet admin.
-Fjerne Admin igen uden at slette bruger
-Design af Matches side
-Chat funktionalitet
+Fjerne Admin igen uden at slette bruger.
+Design af Matches side.
+Chat funktionalitet.
 
