@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta th:name="_csrf" th:content="${_csrf.token}"/>
+    <title>Upload</title>
+    <link rel="stylesheet" href="/stylesheet.css">
+</head>
+
+<!--/*@thymesVar id="goat" type="edu.kea.group.goatsite.model.Goat"*/-->
+
+<body>
+
+<ul>
+    <li><a href="/">Home</a></li>
+    <li style="float:right" class="dropdown">
+        <a style="alignment: left" href="javascript:void(0)" class="dropbtn">More</a>
+        <div class="dropdown-content">
+            <a href="matches.html">Matches</a>
+            <a href="profile.html">Profile</a>
+
+            <div sec:authorize="hasRole('ROLE_ADMIN')">
+                <form th:action="@{/adminpanel}" method="get">
+                    <input class="nav btn-admin-panel" type="submit" value="Admin panel"/>
+                </form>
+            </div>
+            <div>
+                <form name="form-logout" th:action="@{/logout}" method="post">
+                    <button class="nav btn-logout" type="submit">Logout</button>
+                </form>
+            </div>
+        </div>
+    </li>
+</ul>
+
+<h1>Upload Status</h1>
+
+<div th:if="${message}">
+    <h2 th:text="${message}"/>
+</div>
+
+</body>
+</html>
