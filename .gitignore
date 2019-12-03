@@ -5,6 +5,8 @@ HELP.md
 
 .DS_Store
 
+target
+
 ### STS ###
 .apt_generated
 .classpath
