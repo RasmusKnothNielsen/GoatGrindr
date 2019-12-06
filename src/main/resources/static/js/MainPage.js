@@ -163,7 +163,6 @@ class MainPage {
             audio.play();
 
 
-
         } else {
             this.topCard.style.transform = 'translateX(-50%) translateY(-50%) rotate(0deg) rotateY(0deg) scale(1)';
             this.isFlipped = false;
