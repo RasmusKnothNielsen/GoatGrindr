@@ -14,6 +14,7 @@ A Tinder/Grindr like app that offers
 This web application was developed as an mandatory assignment on 3. semester of the AP in computer science from KEA, Denmark.
 
 To run the application, an application.properties file is needed in the following folder:
+
 ```
 src -> main -> resources
 ```
