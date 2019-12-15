@@ -55,4 +55,4 @@ Developers involved:
 - Thomas Dahl
 - Rasmus Knoth Nielsen
 
-Have fun!
+Have fun with GoatGrindr!
