@@ -11,7 +11,7 @@ A Tinder/Grindr like app that offers
 - Bcrypt to hash passwords before they are being stored in the MySQL database
 
 
-This web application was developed as an mandatory assignment on 3. semester of the AP in computer science from KEA, Denmark.
+This web application was developed as an mandatory assignment on 3. semester of the AP in Computer Science from KEA, Denmark.
 
 To run the application, an application.properties file is needed in the following folder:
 
@@ -29,7 +29,8 @@ spring.datasource.password=
 spring.main.allow-bean-definition-overriding=true
 spring.profiles.active=dev
 ```
-Remember to fill in the username and password of the MySQL database.
+Remember to fill in the username and password of the corresponding MySQL database, you'd like to use.
+In the above example, the database is called goats.
 
 Test data for the database is provided in the following folder:
 ```
