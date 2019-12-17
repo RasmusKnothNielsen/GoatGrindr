@@ -59,7 +59,5 @@ Chat funktionalitet.
 Add dropdown gender to add goat
 Add background text to carousel.js, so that it tells the user when there is no more goats to swipe
 
-// Testing Jenkins
-// Again
 
 
